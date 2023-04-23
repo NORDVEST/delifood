@@ -1,0 +1,65 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load dateshed %} <!--Подгружает все фильтры для работы с датой-->
+
+
+{% block title %}
+    Заказывайте большие порции и делитесь ими, получая оптовую выгоду
+{% endblock %}
+
+
+{% block shedule %}
+        <div class="row">
+        <h3>{{ 0|addDays|date:"F" }}</h3>
+            <div class="col">
+                <p>{{ 0|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=1 %}"><button type="button" class="btn btn-primary">{{ 0|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 1|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=2 %}"><button type="button" class="btn btn-primary">{{ 1|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 2|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=3 %}"><button type="button" class="btn btn-primary">{{ 2|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 3|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=4 %}"><button type="button" class="btn btn-primary">{{ 3|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 4|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=5 %}"><button type="button" class="btn btn-primary">{{ 4|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 5|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=6 %}"><button type="button" class="btn btn-primary">{{ 5|addDays|date:"j" }}</button></a>
+            </div>
+            <div class="col">
+                <p>{{ 6|addDays|date:"D" }}</p>
+                <a href="{% url 'order_filter' pk=7 %}"><button type="button" class="btn btn-primary">{{ 6|addDays|date:"j" }}</button></a>
+            </div>
+        </div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block orders %}
+
+    {% for el in order_data %}
+    <!--if el.date==29.03.2023 and el.iduser in [список друзей] and el.adress=='Лиственничная аллея 2А':-->
+        <div class="row">
+            <h3 class="name">{{ el.iduser }}</h3>
+            <p class="str_time">в <span class="time" style="color: red">{{ el.time_order }}</span> закажу</p>
+            <p class="title" style="color: blue">{{el.title}}</p>
+            <p class="calc"><span class="price_order" style="color: green; font-weight: bold">{{ el.price }}</span> ₽ за заказ + <span class="price_del" style="color: green; font-weight: bold">{{el.deliver_price}}</span> ₽ за доставку на <span class="price_del" style="color: green; font-weight: bold">{{el.count_people}}</span> человека = 600,69 ₽</p>
+            <h5>----------------------</h5>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+
+

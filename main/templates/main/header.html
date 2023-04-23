@@ -1,0 +1,34 @@
+
+ {% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                <img src="{% static 'main/img/logo.svg' %}" alt="Logo" width="300" height="60" class="d-inline-block align-text-top">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Заказы от всех соседей</a>
+                  <a class="nav-link" href="{% url 'friends' %}">Друзья</a>
+                  <a class="nav-link" href="#">Адрес</a>
+                  <a class="nav-link" href="{% url 'create' %}">Мои заказы</a>
+                  <!--Кусок кода который проверяет реганый польз или нет, также выводит имя польз и одну из двух ссылок-->
+                  {% if user.is_authenticated %}
+                      <li>User: {{ user.get_username }}</li>
+                      <li><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                  {% else %}
+                      <li><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                  {% endif %}
+                  <!-- Обратите внимание на то, как мы добавили ?next=request.path в конец URLs. Это означает, что следующий URL-адрес содержит
+                  адрес (URL) текущей страницы, в конце связанного URL-адреса. После того как пользователь успешно выполнил вход в систему,
+                  представления будут использовать значение "next" чтобы перенаправить пользователя обратно на страницу, где они сначала
+                  нажали ссылку входа / выхода из системы.-->
+                </div>
+              </div>
+            </div>
+    </nav>
+</header>
+
