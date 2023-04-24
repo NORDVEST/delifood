@@ -14,7 +14,7 @@
                   <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Заказы от всех соседей</a>
                   <a class="nav-link" href="{% url 'friends' %}">Друзья</a>
                   <a class="nav-link" href="#">Адрес</a>
-                  <a class="nav-link" href="{% url 'create' %}">Мои заказы</a>
+{#                  <a class="nav-link" href="{% url 'create' %}">Мои заказы</a>#}
                   <!--Кусок кода который проверяет реганый польз или нет, также выводит имя польз и одну из двух ссылок-->
                   {% if user.is_authenticated %}
                       <li>User: {{ user.get_username }}</li>

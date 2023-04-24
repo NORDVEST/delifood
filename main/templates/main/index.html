@@ -8,43 +8,43 @@
 {% endblock %}
 
 
-{% block shedule %}
-        <div class="row">
-        <h3>{{ 0|addDays|date:"F" }}</h3>
-            <div class="col">
-                <p>{{ 0|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=1 %}"><button type="button" class="btn btn-primary">{{ 0|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 1|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=2 %}"><button type="button" class="btn btn-primary">{{ 1|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 2|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=3 %}"><button type="button" class="btn btn-primary">{{ 2|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 3|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=4 %}"><button type="button" class="btn btn-primary">{{ 3|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 4|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=5 %}"><button type="button" class="btn btn-primary">{{ 4|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 5|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=6 %}"><button type="button" class="btn btn-primary">{{ 5|addDays|date:"j" }}</button></a>
-            </div>
-            <div class="col">
-                <p>{{ 6|addDays|date:"D" }}</p>
-                <a href="{% url 'order_filter' pk=7 %}"><button type="button" class="btn btn-primary">{{ 6|addDays|date:"j" }}</button></a>
-            </div>
-        </div>
-{% endblock %}
-
-{% block content %}
-
-{% endblock %}
+{#{% block shedule %}#}
+{#        <div class="row">#}
+{#        <h3>{{ 0|addDays|date:"F" }}</h3>#}
+{#            <div class="col">#}
+{#                <p>{{ 0|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=1 %}"><button type="button" class="btn btn-primary">{{ 0|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 1|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=2 %}"><button type="button" class="btn btn-primary">{{ 1|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 2|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=3 %}"><button type="button" class="btn btn-primary">{{ 2|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 3|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=4 %}"><button type="button" class="btn btn-primary">{{ 3|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 4|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=5 %}"><button type="button" class="btn btn-primary">{{ 4|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 5|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=6 %}"><button type="button" class="btn btn-primary">{{ 5|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#            <div class="col">#}
+{#                <p>{{ 6|addDays|date:"D" }}</p>#}
+{#                <a href="{% url 'order_filter' pk=7 %}"><button type="button" class="btn btn-primary">{{ 6|addDays|date:"j" }}</button></a>#}
+{#            </div>#}
+{#        </div>#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#{% endblock %}#}
 
 {% block orders %}
 

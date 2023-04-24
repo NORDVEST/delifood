@@ -4,14 +4,22 @@ from django.http import HttpResponse  # delete if no use
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
 from django.views.generic.edit import CreateView
 from django.views import generic
+from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
 
-
-from templatetags.dateshed import addDays
-from .forms import OrdersForm
+# from .forms import OrdersForm
 from .models import *
 
+
+class MainView(TemplateView):
+    template_name = 'main/index.html'
+
+    #
+class RegistrationView(FormView):
 
 
 
@@ -24,10 +32,10 @@ from .models import *
 #     template_name = "main/signup.html"
 #
 #
-# def index(request):
-#     data = Orders.objects.all()
-#
-#     return render(request, 'main/index.html', {'data': data})
+def index(request):
+    # data = Orders.objects.all()
+
+    return render(request, 'main/index.html')
 
 
 def friends(request):
