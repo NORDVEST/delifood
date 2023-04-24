@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,4 +134,12 @@ LOGIN_REDIRECT_URL = 'home'
 
 
 LOGIN_URL = 'login'
+
+# По умолчанию Джанго создает папку profile_pics (для хранения аватарок) на одном уровне с папками приложений,
+# что не слишком удобно. Поэтому надо прописать эти MEDIA
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+MEDIA_URL = '/media/'
 
