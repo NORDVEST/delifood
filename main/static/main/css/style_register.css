@@ -1,0 +1,59 @@
+body {
+	font-family: Inter;
+	background-color: #ECEDF1;
+}
+
+.navtop1{
+	background-color: #C5EE6D4D;
+	border-radius: 10px;
+	text-decoration: none;
+	color: #002033;
+	font-family: 'Nunito';
+	font-style: normal;
+	font-weight: 900;
+	font-size: 19px;
+	line-height: 26px;
+}
+
+.navtop2{
+	margin-left: -10px;
+	line-height: 16px;
+	font-size: 14px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	color: #002033;
+}
+
+#navtopbut{
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	border: 0px;
+    color: #002033;
+    background: none;
+	border-radius: 10px;
+	background: #C5EE6D;
+	line-height: 30px;
+}
+
+.LogoRect{
+	background: #C5EE6D;
+	border-radius: 10px;
+}
+
+.reg{
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+}
+
+#butreg{
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 500;
+	border: 0px;
+	color: #002033;
+	background: #C5EE6D;
+	border-radius: 6px;
+}

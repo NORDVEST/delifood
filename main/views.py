@@ -1,45 +1,35 @@
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect
-from django.http import HttpResponse  # delete if no use
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, FormView
 from django.views import generic
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
 
-# from .forms import OrdersForm
+
 from .models import *
 
 
-class MainView(TemplateView):
-    template_name = 'main/index.html'
+def home(request):
+    context = {
+        'posts': Post.objects.all()
+    }
+    return render(request, 'main/main.html', context)
 
-    #
-class RegistrationView(FormView):
+
+def create(request):
+    return render(request, 'main/create.html', {'title': 'О клубе Python Bytes'})
 
 
-
-# class SignUp(CreateView, generic.ListView):
+#  class SignUp(CreateView, generic.ListView):
 #     model = Adress
 #     context_object_name = 'data_adress'  # ваше собственное имя переменной контекста в шаблоне
 #     form_class = SignUpForm
 #     success_url = reverse_lazy("login")  # Перебрасываем на страницу входа в случае успеха
 #     queryset = Adress.objects.all()
 #     template_name = "main/signup.html"
-#
-#
-def index(request):
-    # data = Orders.objects.all()
-
-    return render(request, 'main/index.html')
-
-
-def friends(request):
-    return HttpResponse("<h4>Страница с друзьями</h4>")
 
 
 # def register(request):

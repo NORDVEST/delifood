@@ -1,34 +1,68 @@
+{% load static %}
 
- {% load static %}
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                <img src="{% static 'main/img/logo.svg' %}" alt="Logo" width="300" height="60" class="d-inline-block align-text-top">
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Заказы от всех соседей</a>
-                  <a class="nav-link" href="{% url 'friends' %}">Друзья</a>
-                  <a class="nav-link" href="#">Адрес</a>
+
+{#<header>#}
+{#    <nav class="navbar navbar-expand-lg bg-body-tertiary">#}
+{#            <div class="container-fluid">#}
+{#                <a class="navbar-brand" href="#">#}
+{#                <img src="{% static 'main/img/logo.svg' %}" alt="Logo" width="300" height="60" class="d-inline-block align-text-top">#}
+{#              </a>#}
+{#              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">#}
+{#                <span class="navbar-toggler-icon"></span>#}
+{#              </button>#}
+{#              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">#}
+{#                <div class="navbar-nav">#}
+{#                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Заказы от всех соседей</a>#}
+{#                  <a class="nav-link" href="{% url 'friends' %}">Друзья</a>#}
+{#                  <a class="nav-link" href="#">Адрес</a>#}
 {#                  <a class="nav-link" href="{% url 'create' %}">Мои заказы</a>#}
-                  <!--Кусок кода который проверяет реганый польз или нет, также выводит имя польз и одну из двух ссылок-->
-                  {% if user.is_authenticated %}
-                      <li>User: {{ user.get_username }}</li>
-                      <li><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-                  {% else %}
-                      <li><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-                  {% endif %}
-                  <!-- Обратите внимание на то, как мы добавили ?next=request.path в конец URLs. Это означает, что следующий URL-адрес содержит
-                  адрес (URL) текущей страницы, в конце связанного URL-адреса. После того как пользователь успешно выполнил вход в систему,
-                  представления будут использовать значение "next" чтобы перенаправить пользователя обратно на страницу, где они сначала
-                  нажали ссылку входа / выхода из системы.-->
-                </div>
-              </div>
+{#                  <!--Кусок кода который проверяет реганый польз или нет, также выводит имя польз и одну из двух ссылок-->#}
+{#                  {% if user.is_authenticated %}#}
+{#                      <li>User: {{ user.get_username }}</li>#}
+{#                      <li><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>#}
+{#                  {% else %}#}
+{#                      <li><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>#}
+{#                  {% endif %}#}
+{#                  <!-- Обратите внимание на то, как мы добавили ?next=request.path в конец URLs. Это означает, что следующий URL-адрес содержит#}
+{#                  адрес (URL) текущей страницы, в конце связанного URL-адреса. После того как пользователь успешно выполнил вход в систему,#}
+{#                  представления будут использовать значение "next" чтобы перенаправить пользователя обратно на страницу, где они сначала#}
+{#                  нажали ссылку входа / выхода из системы.-->#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#    </nav>#}
+{#</header>#}
+    <div class="container mt-3">
+        <div class="row flex-nowrap">
+            <div class="col-2">
+                <a href="" type="button" class="btn btn-success ms-1" id="pop-up-but1"><img class="" src="{% static 'main/img/tochkipopup.svg' %}" alt="tochkipopup" width=""></a>
             </div>
-    </nav>
-</header>
+            <div class="col d-flex justify-content-center">
+                <a href="{% url 'profile' %}" type="button" class="btn btn-success ms-2" id="pop-up-but2">Выбрать своё общежитие<img class="ms-1" src="{% static 'main/img/galkaobsh.svg' %}" alt="galkaobsh" width=""></a>
+            </div>
+            <div class="col-auto d-flex justify-content-end pe-1">
+                <a href="{% url 'profile' %}" type="button" class="btn btn-success " id="pop-up-but3"><img class="" src="{% static 'main/img/avanav.svg' %}" alt="avanav" width="37px"></a>
+            </div>
+        </div>
+    </div>
 
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'home' %}"><i class='bx bxs-rocket bx-tada-hover'></i> Python Bytes</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link " href="{% url 'home' %}">Главная</a>
+              <a class="nav-item nav-link" href="{% url 'create' %}">О клубе</a>
+            </div>
+            <!-- Правая часть навигационной панели -->
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="#">Вход</a>
+              <a class="nav-item nav-link" href="#">Регистрация</a>
+            </div>
+          </div>
+        </div>
+      </nav>

@@ -48,16 +48,20 @@
 
 {% block orders %}
 
-    {% for el in order_data %}
-    <!--if el.date==29.03.2023 and el.iduser in [список друзей] and el.adress=='Лиственничная аллея 2А':-->
-        <div class="row">
-            <h3 class="name">{{ el.iduser }}</h3>
-            <p class="str_time">в <span class="time" style="color: red">{{ el.time_order }}</span> закажу</p>
-            <p class="title" style="color: blue">{{el.title}}</p>
-            <p class="calc"><span class="price_order" style="color: green; font-weight: bold">{{ el.price }}</span> ₽ за заказ + <span class="price_del" style="color: green; font-weight: bold">{{el.deliver_price}}</span> ₽ за доставку на <span class="price_del" style="color: green; font-weight: bold">{{el.count_people}}</span> человека = 600,69 ₽</p>
-            <h5>----------------------</h5>
-        </div>
+
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
     {% endfor %}
+
 
 {% endblock %}
 
