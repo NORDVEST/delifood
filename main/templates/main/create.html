@@ -11,11 +11,17 @@
 {% extends 'main/layout.html' %}
 
 {% block content %}
-    <div>
+    <div class="features">
         <h1>Форма для записи заказов</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form }}
+<!--            {{ form }}-->
+            {{ form.title }}<br>
+            {{ form.price }}<br>
+            {{ form.price_deliver }}<br>
+            {{ form.image }}<br>
+            <span>{{ error }}</span>
+
             <input type="text" placeholder="Название заказа" class="form-control"><br>
             <input type="text" placeholder="Стоимость товара" class="form-control"><br>
             <input type="text" placeholder="Стоимость доставки" class="form-control"><br>

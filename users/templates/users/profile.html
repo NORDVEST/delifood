@@ -5,7 +5,9 @@
 
     <div class="content-section">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <jpg class="ava" width="200" height="200">
+        <img class="rounded-circle account-img", preserveAspectRatio="xMidYMid slice", src="{{ user.profile.image.url }}">
+        </jpg>
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
