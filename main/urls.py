@@ -3,7 +3,7 @@ from . import views
 from django.contrib import admin
 from .views import (
     PostListView,
-    PostDetailView,
+    PostListCreate,
     PostCreateView,
     PostUpdateView,
     PostDeleteView
@@ -12,14 +12,12 @@ from .views import (
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
     path('create/', views.create, name='create'),
-    path('', PostListView.as_view(), name='blog-home'),
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    path('', PostListView.as_view(), name='home'),
     path('post/new/', PostCreateView.as_view(), name='post-create'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
-    path('about/', views.create, name='blog-about')
+    path('post/create', PostListCreate.as_view(), name='blog-create')
 
 
     # path('filter/<int:pk>', services.order_filter, name='order_filter'),

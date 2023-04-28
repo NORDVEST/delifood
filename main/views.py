@@ -15,17 +15,18 @@ from django.views.generic import (
     DeleteView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from main.models import Post
+
 
 from .models import *
 
 
-def home(request):
+
+
+def create(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request, 'main/main.html', context)
-
+    return render(request, 'main/create.html', context)
 
 class PostListView(ListView):
     model = Post
@@ -34,22 +35,34 @@ class PostListView(ListView):
     ordering = ['-date_posted']
 
 
-class PostDetailView(DetailView):
+class PostListCreate(ListView, LoginRequiredMixin, UserPassesTestMixin):
     model = Post
+    template_name = 'main/main.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'price', 'deliver_price']
+    fields = ['title', 'price', 'price_deliver', 'image', 'date_deliver', 'time_deliver', 'cnt_people']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
+
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'price', 'deliver_price']
+    fields = ['title', 'price', 'price_deliver', 'image', 'date_deliver', 'time_deliver', 'cnt_people']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
