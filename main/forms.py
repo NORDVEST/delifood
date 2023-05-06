@@ -1,10 +1,8 @@
-# from .models import Orders
-# from django.forms import ModelForm, TextInput
+# from django import forms
+# from .models import Image
 #
 #
-# class OrdersForm(ModelForm):
+# class ImageForm(forms.ModelForm):
 #     class Meta:
-#         model = Orders
-#         fields = ['title', 'price', 'deliver_price', 'photoid']
-
-    # Файл еще дописывать и дописывать
+#         model = Image
+#         fields = ('title', 'image')
