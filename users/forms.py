@@ -44,7 +44,6 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
-    address = forms.ChoiceField(choices=ADDRESSES)
 
     class Meta:
         model = Profile
