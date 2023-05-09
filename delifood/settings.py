@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'sorl.thumbnail',
     'crispy_forms',
+    'widget_tweaks',
 
     'users.apps.UsersConfig',
     'main.apps.MainConfig',
