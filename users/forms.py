@@ -23,10 +23,12 @@ ADDRESSES = (
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
         labels = {
             'username': _('Ссылка на телеграмм аккаунт (как логин)'),
         }
@@ -34,10 +36,12 @@ class UserRegisterForm(UserCreationForm):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'first_name', 'last_name']
         labels = {
             'username': _('Ссылка на телеграмм аккаунт (как логин)')
         }
