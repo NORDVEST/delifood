@@ -58,10 +58,14 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    address = forms.ChoiceField(
+        choices=ADDRESSES,
+        label="Номер общежития"
+    )
 
     class Meta:
         model = Profile
-        fields = ['image']
+        fields = ['image', 'address']
 
 
 class AddressForm(forms.Form):

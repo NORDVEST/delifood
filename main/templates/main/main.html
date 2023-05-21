@@ -70,6 +70,77 @@
         </article>
     {% endfor %}
 
+
+    {% for post in posts %}
+        <div class = "d-flex container-fluid pe-0 ps-0 mt-2 ms-0 me-0" id="rectwhite">
+            <div class="container ps-0 pe-0 ms-0 me-0">
+                <div class="row ms-0">
+                    <div class="col-10 pb-2">
+                        <div class="d-flex flex-row mt-2">
+                            <div class="image m-1 me-2">
+                                {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
+                                    <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+                                {% endthumbnail %}
+                            </div>
+
+                            <div class="">
+                                <div class="">
+                                    <p class = "name">{{ post.author.get_full_name }}</p>
+                                </div>
+                                <div class="">
+                                    <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex flex-row mt-2 pe-3" style="float: right">
+                            <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-0 ms-1 me-1">
+                    <div class="col">
+                        <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
+                    </div>
+                </div>
+                <div class="row mt-0 ms-1 me-1">
+                    <div class="col">
+                        <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</p>
+                    </div>
+                </div>
+
+                <div class="row mt-1">
+                    <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
+                        <div class="container blure">
+                            <div class="row">
+                                <div class="col">
+                                    {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+                                        <img class="card-img " src="{{ im.url }}">
+                                    {% endthumbnail %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="time d-flex flex-row align-items-center justify-content-between mt-3">
+
+                    <div class="d-flex align-items-center">
+                        <p style="font-size: 1em" class = "fontzakaz ml-1">в <font color ="#59D183">{{ post.time_deliver }}</font> закажу</p>
+                    </div>
+
+                    <div style="background: #D15959"> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
+                        <span class="">Просто сэкономить</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
 
 

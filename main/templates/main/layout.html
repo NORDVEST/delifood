@@ -20,27 +20,27 @@
 
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     {% include 'main/header.html' %}
 
-    <div class="container">
-    {% block shedule %}
-    {% endblock %}
+    <div class="container ps-0 pe-0">
+        {% block shedule %}
+        {% endblock %}
 
-    {% if messages %}
-        	{% for message in messages %}
-          	    <div class="alert alert-{{ message.tags }}" role="alert">
-                	{{ message }}
-          	    </div>
-        	{% endfor %}
-    {% endif %}
+        {% if messages %}
+            	{% for message in messages %}
+              	    <div class="alert alert-{{ message.tags }}" role="alert">
+                    	{{ message }}
+              	    </div>
+            	{% endfor %}
+        {% endif %}
 
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-    {% block orders %}
-    {% endblock %}
+        {% block orders %}
+        {% endblock %}
     </div>
-{% include 'main/footer.html' %}
+
 </body>
 </html>

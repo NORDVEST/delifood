@@ -3,7 +3,30 @@
 
 
 {% block content %}
-    <h1 class="mb-3">Записи пользователя {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+
+    <div class="container mt-2" id = "rectwhite">
+        <div class="container pt-2 pb-2 ps-1">
+            <div class="row ms-0">
+                <button type="button" class="btn btn-primary btn-lg w-100 pt-3 pb-3 d-flex justify-content-center" id = "but3"><img class="me-3" src="../img/plus.svg" alt="plus" width="14px"><span class = "inbut1">Создать новый ордер</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-1">
+        <div class="row ms-0">
+            <div class = "col myordera mt-3">Мои ордера:</div>
+            <div class = "col closetext mt-3 d-flex justify-content-end"><button type="button" class="btn btn-primary btn-lg d-flex justify-content-center" id = "but4">
+                {% if page_obj.paginator.count == 0 %}
+                    Нет ордеров
+                {% else %}
+                    {% if page_obj.paginator.count <= 1 %}
+                        Всего: {{ page_obj.paginator.count }}
+                    {% endif %}
+                {% endif %}
+            </button></div>
+        </div>
+    </div>
+
     {% for post in posts %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -40,4 +63,54 @@
 
     {% endif %}
   </div>
+
+    <div class = "d-flex container-fluid pe-0 ps-0 mt-0" id="rectwhite">
+        <div class="container">
+            <div class="row ms-0">
+                <div class="col-11 pb-2">
+                    <div id="circle2" class = "mt-3 ps-1">
+                        <h5 class = "NameUser ms-5">Ильяс Гимранов</h5>
+                        <p class = "LinkUser ms-5">@you01uoy</p>
+                    </div>
+                </div>
+                <div class="col-1 d-flex justify-content-end">
+                    <img class="" src="../img/3tochki.svg" alt="3tochki" width="5px">
+                </div>
+            </div>
+            <div class="row mt-2 ms-1">
+                <div class="col">
+                    <h5 class = "fontKril">Хочу баскет из KFC, каждому по 6,5 крылышек</h5>
+                </div>
+            </div>
+            <div class="row mt-1 ms-1">
+                <div class="col">
+                    <h5 class = "fontzakaz"><font color ="#59D183">699 ₽</font> за заказ + <font color ="#59D183">151 ₽</font> за доставку на <font color ="#59D183">4</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</h5>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
+                    <div class="container blure">
+                        <div class="row">
+                            <div class="col">
+                                <img src="../img/zakazscreen.png" class="img-fluid position-relative top-50 start-50 translate-middle" alt="screeen">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 pb-5">
+                <div class="col">
+                    <h5 class = "fontzakaz">в <font color ="#59D183">19:00</font> закажу</h5>
+                </div>
+                <div class="col-auto pb-5">
+                    <button type="submit" id = "butretwit" class="btn btn-primary">
+                        <img class = "pb-1" src = "../img/retwit.svg" alt = "retwit">
+                        <i class="icon-user icon-white"></i> Переслать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock content %}
+

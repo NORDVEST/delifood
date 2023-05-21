@@ -53,15 +53,44 @@ table{
 	line-height: 21px;
 	text-align: center;
 }
+.top-container{
+	display: flex;
+	align-items: center;
+}
+.card{
+	background-color: #fff;
+	width: 280px;
+	border-radius: 33px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding: 2rem !important;
+}
 
-#circle2{
-	-webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
+.top-container{
+	display: flex;
+	align-items: center;
+}
+
+.profile-image{
+	border-radius: 10px;
+	border: 2px solid #5957f9;
+}
+.name{
+	font-size: 1em;
+	font-weight: bold;
+	color: #002033;
+	margin: 5px 2px 0px 0px;
+}
+
+.tg_link{
+	font-size: 0.8em;
 	position: relative;
-	width: 45px;
-	height: 45px;
-	background: #D9D9D9;
+	bottom: 4px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 15px;
+	text-decoration-line: underline;
+
+	color: #1D94CF;
 }
 
 #rectwhite{
@@ -70,17 +99,6 @@ table{
 	background-color: #FFFFFF;
 	color: #002033;
 	border: 0px;
-}
-
-.NameUser{
-	white-space: nowrap;
-	color: #002033;
-}
-
-.LinkUser{
-	margin-top: -27%;
-	white-space: nowrap;
-	color: #646464;
 }
 
 .fontKril{

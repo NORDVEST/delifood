@@ -23,6 +23,8 @@ class Post(models.Model):
         null=True
     )
 
+    mod = models.CharField('Мод ордера', blank=True, null=True, max_length=250)
+
     class Meta:
         ordering = ('-date_posted',)
         verbose_name = 'Пост'
