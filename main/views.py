@@ -19,7 +19,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
-# from .forms import ImageForm
+from .forms import PostForm1, PostForm2, PostForm3
 
 from .models import *
 
@@ -67,9 +67,27 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView(LoginRequiredMixin, CreateView):
-    model = Post
-    fields = ['title', 'price', 'price_deliver', 'cnt_people', 'date_deliver', 'time_deliver', 'image', 'mod']
+class PostCreateView1(LoginRequiredMixin, CreateView, FormView):
+    form_class = PostForm1
+    template_name = 'main/post_form1.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class PostCreateView2(LoginRequiredMixin, CreateView, FormView):
+    form_class = PostForm2
+    template_name = 'main/post_form2.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class PostCreateView3(LoginRequiredMixin, CreateView, FormView):
+    form_class = PostForm3
+    template_name = 'main/post_form3.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -127,7 +145,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 #         'error' : error
 #     }
 #
-#     return render(request, 'main/post_form.html', data)
+#     return render(request, 'main/post_form1.html', data)
 
 
 
@@ -173,4 +191,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 #         'error': error
 #     }
 #
-#     return render(request, 'main/post_form.html', data)
+#     return render(request, 'main/post_form1.html', data)

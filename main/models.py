@@ -23,7 +23,7 @@ class Post(models.Model):
         null=True
     )
 
-    mod = models.CharField('Мод ордера', blank=True, null=True, max_length=250)
+    mod = models.CharField('Мод ордера', blank=True, null=True, max_length=250)  # default='Просто сэкономить'
 
     class Meta:
         ordering = ('-date_posted',)
@@ -35,6 +35,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        super(Post, self).save(*args, **kwargs)
+
+        img = Image.open(self.image.path)
+
+        if img.height > 1280 or img.width > 1280:
+            output_size = (1280, 1280)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
 
 
 # def get_image_filename(instance, filename):
