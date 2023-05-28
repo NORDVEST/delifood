@@ -9,4 +9,3 @@ register = template.Library()
 def addDays(days):
    newDate = datetime.date.today() + datetime.timedelta(days=days)
    return newDate
-

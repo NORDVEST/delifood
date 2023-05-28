@@ -41,6 +41,36 @@ table{
 	border: 0px;
 }
 
+.group_shed{
+	width: 100%;
+}
+
+.group_shed p{
+	margin-bottom: 9px;
+}
+
+.shed {
+	background: #FDFAF5;
+	border: #FDFAF5;
+	height: 103px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.date_orders{
+	font-size: 0.7em;
+}
+
+.date_number{
+	font-weight: 500;
+}
+
+.cnt_orders {
+	color: #59D183;
+	font-size: 0.6em;
+	font-weight: 500;
+}
+
 #circle1 {
 	width: 45px;
 	height: 45px;
@@ -114,37 +144,119 @@ table{
 	font-size: 1em
 }
 
-#rectscreen{
-	background-image: url('C://Users/Maxim Sergeev/Desktop/Курсач/Prod-Mobile/img/zakazscreen.png');
-	border: 0px;
-}
-
 .blure{
 	backdrop-filter: blur(55px);
 }
 
-#butretwit{
-	border: 0px;
-	border-radius: 22px;
-	background: #F5F5F5;
-    color: #888C95;
-}
-
-#rectnavfooter{
-	width: 100%;
-	border-radius: 0px;
-	background: #FDFAF5;
-	color: #646464;
-	border: 0px;
-}
-
-#buthome{
-	border: 0px;
-	border-radius: 0px;
-	background: none;
-    color: #646464;
-}
-
-
 a {text-decoration: none; color: #002033;}
 a:hover {text-decoration: none; color: #002033;}
+
+/*-----Делаем навигацию-----*/
+
+#offcanvasScrollingLabel{
+	padding-left: 10px;
+}
+
+.big_logo{
+	float: left;
+}
+
+.offcanvas-title{
+	font-style: normal;
+	font-weight: 600;
+	font-size: 19px;
+	color: #002033;
+	float: left;
+	margin-left: 6px;
+	padding: 4px;
+}
+
+.offcanvas-body{
+	border-top: 0.5px solid #C5C5C5;
+}
+
+.div_link1{
+}
+
+.div_link2{
+	border-top: 0.5px solid #C5C5C5;
+}
+
+.image_icon{
+	margin: 10px;
+	padding: 0;
+}
+
+.my_order_title{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	margin-bottom: 0;
+
+	color: #002033;
+	position: relative;
+	top: 3px;
+}
+
+.my_order_subtitle{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	margin-bottom: 3px;
+
+	color: #002033;
+}
+
+.nav_crutch{
+	width: 100%;
+	position: relative;
+	bottom: 22px;
+}
+
+.nav_blur_bubble{
+	position: relative;
+	bottom: 60px;
+	width: 100%;
+}
+
+.div_link3{
+	position: relative;
+	bottom: 141px;
+}
+
+.mini_landing{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	margin: 0 65px 0 33px;
+
+	color: #002033;
+	position: relative;
+	bottom: 135px;
+}
+
+.land_link{
+	position: relative;
+	bottom: 115px;
+	margin: 0 33px;
+	background: #C5EE6D;
+	border-radius: 12px;
+	border: none;
+	color: #002033;
+	padding: 7px 30px;
+	font-weight: 500;
+}
+
+.land_link:hover{
+	background: #1D94CF;
+	color: #002033;
+}
+
+.blur_buuble_green{
+	position: relative;
+	bottom: 226px;
+	z-index: -2;
+	width: 215px;
+	right: 5px;
+}

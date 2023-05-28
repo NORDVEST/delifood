@@ -9,66 +9,91 @@
 {% endblock %}
 
 
-{#{% block shedule %}#}
-{#        <div class="row">#}
-{#        <h3>{{ 0|addDays|date:"F" }}</h3>#}
-{#            <div class="col">#}
-{#                <p>{{ 0|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=1 %}"><button type="button" class="btn btn-primary">{{ 0|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 1|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=2 %}"><button type="button" class="btn btn-primary">{{ 1|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 2|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=3 %}"><button type="button" class="btn btn-primary">{{ 2|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 3|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=4 %}"><button type="button" class="btn btn-primary">{{ 3|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 4|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=5 %}"><button type="button" class="btn btn-primary">{{ 4|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 5|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=6 %}"><button type="button" class="btn btn-primary">{{ 5|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <p>{{ 6|addDays|date:"D" }}</p>#}
-{#                <a href="{% url 'order_filter' pk=7 %}"><button type="button" class="btn btn-primary">{{ 6|addDays|date:"j" }}</button></a>#}
-{#            </div>#}
-{#        </div>#}
-{#{% endblock %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#{% endblock %}#}
+{% block shedule %}
+    {% include 'main/header.html' %}
+    <h3>{{ 0|addDays|date:"F" }}</h3>
+    <div class="btn-toolbar" role="toolbar" aria-label="Панель инструментов с группами кнопок">
+        <div class="group_shed btn-group" role="group" aria-label="Группа" style="background: #1D94CF;">
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="{% url 'home' %}">
+                    <p class="date_orders">{{ 0|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 0|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 1|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 1|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 1|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 2|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 2|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 2|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 3|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 3|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 3|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 4|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 4|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 4|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br>orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 5|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 5|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 5|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+            <button type="button" class="shed btn btn-lihgt">
+                <a href="?date={{ 6|addDays|date:"Y-m-d" }}">
+                    <p class="date_orders">{{ 6|addDays|date:"D" }}</p>
+                    <p class="date_number">{{ 6|addDays|date:"j" }}</p>
+                    <p class="cnt_orders">1 <br> orders</p>
+                </a>
+            </button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+
 
 {% block orders %}
 
-    {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author.get_full_name }}</a>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.price }}</p>
-              <p class="article-content">{{ post.price_deliver }}</p>
-              <p class="article-content">{{ post.cnt_people }}</p>
-              {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
-                <img class="card-img my-2" src="{{ im.url }}">
-              {% endthumbnail %}
-              <p class="article-content">{{ post.date_deliver }}</p>
-              <p class="article-content">{{ post.time_deliver }}</p>
-          </div>
-        </article>
-    {% endfor %}
+{#    {% for post in posts %}#}
+{#        <article class="media content-section">#}
+{#          <div class="media-body">#}
+{#            <div class="article-metadata">#}
+{#              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>#}
+{#            </div>#}
+{#            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>#}
+{#            <p class="article-content">{{ post.price }}</p>#}
+{#              <p class="article-content">{{ post.price_deliver }}</p>#}
+{#              <p class="article-content">{{ post.cnt_people }}</p>#}
+{#              {% thumbnail post.image "960x339" crop="center" upscale=True as im %}#}
+{#                <img class="card-img my-2" src="{{ im.url }}">#}
+{#              {% endthumbnail %}#}
+{#              <p class="article-content">{{ post.date_deliver }}</p>#}
+{#              <p class="article-content">{{ post.time_deliver }}</p>#}
+{#          </div>#}
+{#        </article>#}
+{#    {% endfor %}#}
 
 
     {% for post in posts %}
@@ -111,20 +136,16 @@
                     </div>
                 </div>
 
-                <div class="row mt-0">
-                    <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
-                        <div class="container blure">
-                            <div class="row">
-                                <div class="col">
-                                    {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
-                                        <img class="card-img " src="{{ im.url }}">
-                                    {% endthumbnail %}
-                                </div>
+
+                    <div class = "d-flex container-fluid mx-0 px-0">
+                        <div class="row">
+                            <div class="col">
+                                {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
+                                    <img class="card-img " src="{{ im.url }}">
+                                {% endthumbnail %}
                             </div>
                         </div>
                     </div>
-                </div>
-
 
                 <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
 

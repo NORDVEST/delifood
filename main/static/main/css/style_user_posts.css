@@ -1,0 +1,66 @@
+#button_create_order{
+    font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	text-align: center;
+	color: #002033;
+	border: 0;
+	background: #C5EE6D;
+	border-radius: 10px;
+
+}
+
+.dropdown-menu{
+	background: #FFFFFF;
+	box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.5);
+	border-radius: 13px;
+}
+
+#dropdown-item{
+	font-weight: 500;
+	border-bottom: 0.5px solid #C5C5C5;
+}
+
+.link_form_1{
+	border-bottom: 0.5px solid #C5C5C5;
+	padding-bottom: 4px;
+}
+
+.link_form_3{
+	padding-bottom: 4px;
+}
+
+.subs{
+	color: rgba(0, 32, 51, 0.65);
+}
+
+.my_order_title_mod{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	margin-bottom: 0;
+	color: #002033;
+	position: relative;
+	top: 3px;
+}
+
+.myordera{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	color: #002033;
+
+}
+
+#but4{
+	width: 70%;
+	margin-bottom: 10%;
+	border: 0;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	text-align: center;
+	color: #8D8D8D;
+	background: #FDFAF5;
+	border-radius: 31px;
+}

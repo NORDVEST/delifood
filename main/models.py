@@ -23,7 +23,7 @@ class Post(models.Model):
         null=True
     )
 
-    mod = models.CharField('Мод ордера', blank=True, null=True, max_length=250)  # default='Просто сэкономить'
+    mod = models.CharField('Мод ордера', blank=True, null=True, max_length=250)
 
     class Meta:
         ordering = ('-date_posted',)

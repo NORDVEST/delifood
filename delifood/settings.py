@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'crispy_forms',
     'widget_tweaks',
+    'django_filters',
 
     'users.apps.UsersConfig',
     'main.apps.MainConfig',

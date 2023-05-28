@@ -1,25 +1,85 @@
 {% extends 'main/layout.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+{% load thumbnail %}
 
 
 {% block content %}
+    <img src="{% static 'main/img/hint_in_my_order.svg' %}" alt="" width="100%">
 
-    <div class="container mt-2" id = "rectwhite">
-        <div class="container pt-2 pb-2 ps-1">
-            <div class="row ms-0">
-                <button type="button" class="btn btn-primary btn-lg w-100 pt-3 pb-3 d-flex justify-content-center" id = "but3"><img class="me-3" src="../img/plus.svg" alt="plus" width="14px"><span class = "inbut1">Создать новый ордер</span></button>
+    <div class="container mt-2 py-2" id = "rectwhite">
+            <div class="row">
+                <div class="btn-group m-0 px-3">
+                    <button type="button" id="button_create_order" class="btn btn-danger dropdown py-2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="me-3" src="{% static 'main/img/plus.svg' %}" alt="plus">Создать новый ордер
+                    </button>
+                    <ul class="dropdown-menu py-0">
+                        <li><a class="dropdown-item py-2" id="dropdown-item" href="#">Выберете, мод ордера:</a></li>
+
+                        <li><a href="{% url 'post-create' %}" class="dropdown-item px-3">
+                            <div class="link_form_1 d-flex flex-row mt-0 mx-0">
+                                <div class="image_icon">
+                                    <img src="{% static 'main/img/emoji1.svg' %}" alt="">
+                                </div>
+
+                                <div class="">
+                                    <div class="">
+                                        <p class="my_order_title_mod">Просто сэкономить</p>
+                                    </div>
+                                    <div>
+                                        <p class="my_order_subtitle">на доставке и единице товара<br><span class="subs">(что-то типа баскета🍗)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a></li>
+
+                        <li><a href="{% url 'post-create2' %}" class="dropdown-item px-3">
+                            <div class="link_form_1 d-flex flex-row mt-0 mx-0">
+                                <div class="image_icon">
+                                    <img src="{% static 'main/img/emoji2.svg' %}" alt="">
+                                </div>
+
+                                <div class="">
+                                    <div class="">
+                                        <p class="my_order_title_mod">Можно посидеть, а можно только сэконом...</p>
+                                    </div>
+                                    <div>
+                                        <p class="my_order_subtitle">на доставке и единице товара<br><span class="subs">(например, суши сет🍱)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a></li>
+
+                        <li><a href="{% url 'post-create3' %}" class="dropdown-item px-3">
+                            <div class="link_form_3 d-flex flex-row mt-0 mx-0">
+                                <div class="image_icon">
+                                    <img src="{% static 'main/img/emoji3.svg' %}" alt="">
+                                </div>
+
+                                <div class="">
+                                    <div class="">
+                                        <p class="my_order_title_mod">Собраться, вкусно потусоваться и сэконо...</p>
+                                    </div>
+                                    <div>
+                                        <p class="my_order_subtitle">на доставке и единице товара<br><span class="subs">(или вообще пицца🍕🍕)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+
     </div>
 
     <div class="container mt-1">
         <div class="row ms-0">
-            <div class = "col myordera mt-3">Мои ордера:</div>
-            <div class = "col closetext mt-3 d-flex justify-content-end"><button type="button" class="btn btn-primary btn-lg d-flex justify-content-center" id = "but4">
+            <div class = "col myordera mt-2 mb-0">Мои ордера:</div>
+            <div class = "col closetext mt-2 mb-0 d-flex justify-content-end"><button type="button" class="btn btn-primary d-flex justify-content-center" id = "but4">
                 {% if page_obj.paginator.count == 0 %}
                     Нет ордеров
                 {% else %}
-                    {% if page_obj.paginator.count <= 1 %}
+                    {% if page_obj.paginator.count >= 1 %}
                         Всего: {{ page_obj.paginator.count }}
                     {% endif %}
                 {% endif %}
@@ -28,18 +88,99 @@
     </div>
 
     {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-            </div>
+        <div class="control_panel offcanvas-header">
+            <a class="" href="{% url 'post-delete' post.id %}"><button type="button" id="button_create_order" class="btn btn-danger dropdown py-2">
+                Удалить
+            </button></a>
+            {% if post.mod == 'Просто сэкономить' %}
+                            <a class="btn btn-secondary btn-sm" href="{% url 'post-update' post.id %}">Изменить</a>
+                        {% else %}
+                            {% if post.mod == 'Можно посидеть' %}
+                                <a class="btn btn-secondary btn-sm" href="{% url 'post-update2' post.id %}">Изменить</a>
+                            {% else %}
+                                <a class="btn btn-secondary btn-sm" href="{% url 'post-update3' post.id %}">Изменить</a>
+                            {% endif %}
+
+                        {% endif %}
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
-        </article>
+        </div>
+        <div class = "d-flex container-fluid pe-0 ps-0 mt-2 ms-0 me-0" id="rectwhite">
+            <div class="container ps-0 pe-0 ms-0 me-0">
+                <div class="row ms-0">
+                    <div class="col-10 pb-2">
+                        <div class="d-flex flex-row mt-2">
+                            <div class="image m-1 me-2">
+                                {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
+                                    <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+                                {% endthumbnail %}
+                            </div>
+
+                            <div class="">
+                                <div class="">
+                                    <p class = "name">{{ post.author.get_full_name }}</p>
+                                </div>
+                                <div class="">
+                                    <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex flex-row mt-2 pe-3" style="float: right">
+                            <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-0 mx-1">
+                    <div class="col">
+                        <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
+                    </div>
+                </div>
+                <div class="row mt-0 mx-1">
+                    <div class="col">
+                        <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</p>
+                    </div>
+                </div>
+
+                <div class="row mt-0">
+                    <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
+                        <div class="container blure">
+                            <div class="row">
+                                <div class="col">
+                                    {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
+                                        <img class="card-img " src="{{ im.url }}">
+                                    {% endthumbnail %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
+
+                    <div class = "fontzakaz ">в <font color="#59D183">{{ post.time_deliver }}</font> закажу</div>
+
+                    <div> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
+                        {% if post.mod == 'Просто сэкономить' %}
+                            <img class="" src="{% static 'main/img/mod1.svg' %}" width="140">
+                        {% else %}
+                            {% if post.mod == 'Можно посидеть' %}
+                                <img class="" src="{% static 'main/img/mod2.svg' %}" width="140">
+                            {% else %}
+                                <img class="" src="{% static 'main/img/mod3.svg' %}" width="140">
+                            {% endif %}
+
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     {% endfor %}
+
     <div class="pagination justify-content-center">
     {% if is_paginated %}
 
@@ -63,54 +204,6 @@
 
     {% endif %}
   </div>
-
-    <div class = "d-flex container-fluid pe-0 ps-0 mt-0" id="rectwhite">
-        <div class="container">
-            <div class="row ms-0">
-                <div class="col-11 pb-2">
-                    <div id="circle2" class = "mt-3 ps-1">
-                        <h5 class = "NameUser ms-5">Ильяс Гимранов</h5>
-                        <p class = "LinkUser ms-5">@you01uoy</p>
-                    </div>
-                </div>
-                <div class="col-1 d-flex justify-content-end">
-                    <img class="" src="../img/3tochki.svg" alt="3tochki" width="5px">
-                </div>
-            </div>
-            <div class="row mt-2 ms-1">
-                <div class="col">
-                    <h5 class = "fontKril">Хочу баскет из KFC, каждому по 6,5 крылышек</h5>
-                </div>
-            </div>
-            <div class="row mt-1 ms-1">
-                <div class="col">
-                    <h5 class = "fontzakaz"><font color ="#59D183">699 ₽</font> за заказ + <font color ="#59D183">151 ₽</font> за доставку на <font color ="#59D183">4</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</h5>
-                </div>
-            </div>
-            <div class="row mt-1">
-                <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
-                    <div class="container blure">
-                        <div class="row">
-                            <div class="col">
-                                <img src="../img/zakazscreen.png" class="img-fluid position-relative top-50 start-50 translate-middle" alt="screeen">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3 pb-5">
-                <div class="col">
-                    <h5 class = "fontzakaz">в <font color ="#59D183">19:00</font> закажу</h5>
-                </div>
-                <div class="col-auto pb-5">
-                    <button type="submit" id = "butretwit" class="btn btn-primary">
-                        <img class = "pb-1" src = "../img/retwit.svg" alt = "retwit">
-                        <i class="icon-user icon-white"></i> Переслать
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 {% endblock content %}
 

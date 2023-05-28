@@ -1,7 +1,10 @@
+import django_filters
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.forms import model_to_dict, modelformset_factory
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+import datetime
 from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse_lazy
@@ -18,38 +21,32 @@ from django.views.generic import (
     DeleteView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post
-from .forms import PostForm1, PostForm2, PostForm3
 
+from .forms import PostForm1, PostForm2, PostForm3
 from .models import *
 
-
-# def image_upload_view(request):
-#     """Process images uploaded by users/обработчик формы"""
-#     if request.method == 'POST':
-#         form = ImageForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             # Get the current instance object to display in the template
-#             img_obj = form.instance
-#             return render(request, 'main/create_form.html', {'form': form, 'img_obj': img_obj})
-#     else:
-#         form = ImageForm()
-#     return render(request, 'main/create_form.html', {'form': form})
+from users.models import Profile
 
 
-def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'main/main.html', context)
-
-
-class PostListView(ListView):
+class PostListView(ListView, LoginRequiredMixin):
     model = Post
     template_name = 'main/main.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']
+
+    def get_queryset(self):
+        profile_list = Profile.objects.filter(address=self.request.user.profile.address)  # Получили список нужных нам
+        # профилей
+
+        queryset = Post.objects.filter(author__profile__in=profile_list).order_by('-date_posted')  # Получ нужные posts
+
+        if self.request.GET.get("date"):
+            date = self.request.GET.get("date")
+        else:
+            date = (datetime.datetime.now() + datetime.timedelta(days=0)).date()
+
+        queryset = queryset.filter(date_deliver=date)  # Достаем все посты с данной датой
+
+        return queryset
 
 
 class UserPostListView(ListView):
@@ -96,7 +93,40 @@ class PostCreateView3(LoginRequiredMixin, CreateView, FormView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'price', 'price_deliver', 'cnt_people', 'date_deliver', 'time_deliver', 'image', 'mod']
+    form_class = PostForm1
+    template_name = 'main/post_form1.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+class PostUpdateView2(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    form_class = PostForm2
+    template_name = 'main/post_form2.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
+
+class PostUpdateView3(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
+    form_class = PostForm3
+    template_name = 'main/post_form3.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
