@@ -1,17 +1,21 @@
 {% extends 'main/layout.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
+
     <div class="content-section">
         <form method="POST" enctype="multipart/form-data">  <!--Включение свойства enctype для формы обеспечивает правильное прикрепление загруженного файла к запросу.-->
             {% csrf_token %}
-            <fieldset class="form-group">
+            <div class="nav_panel offcanvas-header py-2">
+                <a href="{% url 'user-posts'  user.username %}" type=""><img class="mx-3" src="{% static 'main/img/close_form.svg' %}" alt=""></a>
+                <p class="m-0" style="font-weight: 600">Просто сэкономить</p>
+                <button type="submit" style="border: 0;"><img class="mx-3 my-2" src="{% static 'main/img/done_form.svg' %}"></button>
+            </div>
+            <fieldset class="form-group px-3">
                 <legend class="border-bottom mb-4">Новая запись</legend>
                 {{ form|crispy }}
             </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Сохранить</button>
-            </div>
         </form>
     </div>
 {% endblock content %}

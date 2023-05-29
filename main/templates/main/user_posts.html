@@ -3,8 +3,17 @@
 {% load static %}
 {% load thumbnail %}
 
+{% block title %}
+    Мои ордера
+{% endblock %}
 
 {% block content %}
+    <div class="nav_panel offcanvas-header">
+        <a href="{% url 'home' %}" type=""><img class="mx-3" src="{% static 'main/img/arrow_back.svg' %}" alt=""></a>
+        <p class="m-0" style="font-weight: 600">Мои ордера</p>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+    </div>
+
     <img src="{% static 'main/img/hint_in_my_order.svg' %}" alt="" width="100%">
 
     <div class="container mt-2 py-2" id = "rectwhite">
@@ -72,9 +81,9 @@
 
     </div>
 
-    <div class="container mt-1">
+    <div class="container mt-2 mb-4 px-3">
         <div class="row ms-0">
-            <div class = "col myordera mt-2 mb-0">Мои ордера:</div>
+            <div class = "col myordera mt-2 mb-0 px-0">Мои ордера:</div>
             <div class = "col closetext mt-2 mb-0 d-flex justify-content-end"><button type="button" class="btn btn-primary d-flex justify-content-center" id = "but4">
                 {% if page_obj.paginator.count == 0 %}
                     Нет ордеров
@@ -88,23 +97,23 @@
     </div>
 
     {% for post in posts %}
-        <div class="control_panel offcanvas-header">
+        <div class="control_panel offcanvas-header px-3">
             <a class="" href="{% url 'post-delete' post.id %}"><button type="button" id="button_create_order" class="btn btn-danger dropdown py-2">
-                Удалить
+                Ордер заполнен
             </button></a>
             {% if post.mod == 'Просто сэкономить' %}
-                            <a class="btn btn-secondary btn-sm" href="{% url 'post-update' post.id %}">Изменить</a>
-                        {% else %}
-                            {% if post.mod == 'Можно посидеть' %}
-                                <a class="btn btn-secondary btn-sm" href="{% url 'post-update2' post.id %}">Изменить</a>
-                            {% else %}
-                                <a class="btn btn-secondary btn-sm" href="{% url 'post-update3' post.id %}">Изменить</a>
-                            {% endif %}
+                <a class="edit_order" href="{% url 'post-update' post.id %}">Изменить</a>
+            {% else %}
+                {% if post.mod == 'Можно посидеть' %}
+                    <a class="edit_order" href="{% url 'post-update2' post.id %}">Изменить</a>
+                {% else %}
+                    <a class="edit_order" href="{% url 'post-update3' post.id %}">Изменить</a>
+                {% endif %}
+            {% endif %}
 
-                        {% endif %}
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
         </div>
-        <div class = "d-flex container-fluid pe-0 ps-0 mt-2 ms-0 me-0" id="rectwhite">
+
+        <div class = "d-flex container-fluid pe-0 ps-0 mt-0 ms-0 me-0" id="rectwhite_in_user_posts">
             <div class="container ps-0 pe-0 ms-0 me-0">
                 <div class="row ms-0">
                     <div class="col-10 pb-2">

@@ -33,103 +33,89 @@
 {#            </div>#}
 {#    </nav>#}
 {#</header>#}
+    <div class="nav_panel offcanvas-header">
+        <a href="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"  class="ms-3" type="button" style="background: rgba(255, 255, 255, 0.47); border-radius: 38px; padding: 6px 12px;"><img class="" src="{% static 'main/img/tochkipopup.svg' %}" alt=""></a>
+        {% if user.profile.address %}
+            <a href="{% url 'profile' %}" class="m-0" style="font-weight: 600">{{ user.profile.address }}</a>
+        {% else %}
+            <a href="{% url 'profile' %}" class="m-0" style="font-weight: 600">Выбери свою общагу</a>
+        {% endif %}
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
 
-    <div class="container mt-3">
-        <div class="row flex-nowrap">
-            <div class="col-2">
-                <a href="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" class="btn btn-success ms-1" id="pop-up-but1"><img class="" src="{% static 'main/img/tochkipopup.svg' %}" alt="tochkipopup" width=""></a>
-
-                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                    <div class="offcanvas-header">
-                        <div id="offcanvasScrollingLabel"><img class="big_logo" src="{% static 'main/img/big_logo_delifood.svg' %}" alt=""><p class="offcanvas-title">ДелиFood</p></div>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
-                    </div>
-                    <div class="offcanvas-body p-0 m-0">
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'user-posts' user.username %}">
-                            <div class="div_link1 d-flex flex-row mt-0 mx-4 py-2">
-                                <div class="image_icon">
-                                    <img src="{% static 'main/img/my_order_icon.svg' %}" alt="">
-                                </div>
-
-                                <div class="">
-                                    <div class="">
-                                        <p class="my_order_title">Мои ордера</p>
-                                    </div>
-                                    <div>
-                                        <p class="my_order_subtitle">Активных ордеров - 2</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{% url 'profile' %}">
-                            <div class="div_link2 d-flex flex-row mt-0 mx-4 py-2">
-                                <div class="image_icon">
-                                    <img src="{% static 'main/img/profile_icon.svg' %}" alt="">
-                                </div>
-
-                                <div class="">
-                                    <div class="">
-                                        <p class="my_order_title">Управление аккаунтом</p>
-                                    </div>
-                                    <div>
-                                        <p class="my_order_subtitle">@you01uoy</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        {% else %}
-
-                            <a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
-                            <a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
-
-                        {% endif %}
-                        <img src="{% static 'main/img/nav_crutch.svg' %}" alt="" class="nav_crutch">
-                        <img src="{% static 'main/img/nav_blur_bubble.svg' %}" alt="" class="nav_blur_bubble">
-                        <a href="">
-                            <div class="div_link3 d-flex flex-row mt-0 mx-4 py-2">
-                                <div class="image_icon">
-                                    <img src="{% static 'main/img/nav_mini_logo.svg' %}" alt="">
-                                </div>
-
-                                <div class="">
-                                    <div class="">
-                                        <p class="my_order_title">Кто мы такие</p>
-                                    </div>
-                                    <div>
-                                        <p class="my_order_subtitle">И чем мы вам полезны</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <p class="mini_landing">Мы – ДелиFood, и мы поможем тебе найти идеальную тусовку, сэкономить на доставке,
-                            найдем людей, которым нужна еда оттуда же,
-                            откуда и вам – так доставка обойдется вам минимум на 50% <br>дешевле</p>
-                        <button type="button" class="land_link btn btn-primary">Узнать подробнее</button>
-                        <img src="{% static 'main/img/blur_buuble_green.svg' %}" alt="" class="blur_buuble_green">
-                    </div>
-                </div>
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <div id="offcanvasScrollingLabel"><img class="big_logo" src="{% static 'main/img/big_logo_delifood.svg' %}" alt=""><p class="offcanvas-title">ДелиFood</p></div>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
             </div>
-            <div class="col d-flex justify-content-center">
+            <div class="offcanvas-body p-0 m-0">
                 {% if user.is_authenticated %}
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'profile' %}" type="button" class="btn btn-success ms-2" id="pop-up-but2">{{ user.profile.address }}</a>
-                    {% endif %}
-                    {% else %}
-                    <a href="{% url 'profile' %}" type="button" class="btn btn-success ms-2" id="pop-up-but2">Выбрать своё общежитие<img class="ms-1" src="{% static 'main/img/galkaobsh.svg' %}" alt="galkaobsh" width=""></a>
-                {% endif %}
-            </div>
-            <div class="col-auto d-flex justify-content-end pe-1">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'profile' %}" type="button" class="btn btn-success " id="pop-up-but3"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+                <a href="{% url 'user-posts' user.username %}">
+                    <div class="div_link1 d-flex flex-row mt-0 mx-4 py-2">
+                        <div class="image_icon">
+                            <img src="{% static 'main/img/my_order_icon.svg' %}" alt="">
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <p class="my_order_title">Мои ордера</p>
+                            </div>
+                            <div>
+                                <p class="my_order_subtitle">Активных ордеров - 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="{% url 'profile' %}">
+                    <div class="div_link2 d-flex flex-row mt-0 mx-4 py-2">
+                        <div class="image_icon">
+                            <img src="{% static 'main/img/profile_icon.svg' %}" alt="">
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <p class="my_order_title">Управление аккаунтом</p>
+                            </div>
+                            <div>
+                                <p class="my_order_subtitle">@you01uoy</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
                 {% else %}
-                    <a href="{% url 'profile' %}" type="button" class="btn btn-success " id="pop-up-but3"><img class="rounded-circle account-img" src="{% static 'main/img/default.jpg' %}" alt="avanav" width="37px" height="37px"></a>
+
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
+
                 {% endif %}
+                <img src="{% static 'main/img/nav_crutch.svg' %}" alt="" class="nav_crutch">
+                <img src="{% static 'main/img/nav_blur_bubble.svg' %}" alt="" class="nav_blur_bubble">
+                <a href="">
+                    <div class="div_link3 d-flex flex-row mt-0 mx-4 py-2">
+                        <div class="image_icon">
+                            <img src="{% static 'main/img/nav_mini_logo.svg' %}" alt="">
+                        </div>
+
+                        <div class="">
+                            <div class="">
+                                <p class="my_order_title">Кто мы такие</p>
+                            </div>
+                            <div>
+                                <p class="my_order_subtitle">И чем мы вам полезны</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <p class="mini_landing">Мы – ДелиFood, и мы поможем тебе найти идеальную тусовку, сэкономить на доставке,
+                    найдем людей, которым нужна еда оттуда же,
+                    откуда и вам – так доставка обойдется вам минимум на 50% <br>дешевле</p>
+                <button type="button" class="land_link btn btn-primary">Узнать подробнее</button>
+                <img src="{% static 'main/img/blur_buuble_green.svg' %}" alt="" class="blur_buuble_green">
             </div>
         </div>
     </div>
+
 
 
 {#      <nav class="navbar navbar-expand-lg bg-body-tertiary">#}

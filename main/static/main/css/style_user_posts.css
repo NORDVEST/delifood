@@ -1,7 +1,9 @@
+
+
 #button_create_order{
     font-style: normal;
 	font-weight: 500;
-	font-size: 14px;
+	font-size: 16px;
 	text-align: center;
 	color: #002033;
 	border: 0;
@@ -64,3 +66,28 @@
 	background: #FDFAF5;
 	border-radius: 31px;
 }
+
+.control_panel{
+	background: #F5F5F5;
+	border-radius: 15px 15px 0 0;
+	position: relative;
+	height: 90px;
+	padding-bottom: 30px;
+	margin-top: -20px;
+}
+
+.edit_order{
+	color: #D15959;
+
+}
+
+#rectwhite_in_user_posts{
+	width: 100%;
+	border-radius: 15px;
+	background-color: #FFFFFF;
+	color: #002033;
+	border: 0px;
+	position: relative;
+	bottom: 30px;
+}
+

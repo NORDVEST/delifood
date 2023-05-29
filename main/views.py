@@ -48,6 +48,45 @@ class PostListView(ListView, LoginRequiredMixin):
 
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        profile_list = Profile.objects.filter(address=self.request.user.profile.address)  # Получили список нужных нам
+        # профилей
+
+        queryset = Post.objects.filter(author__profile__in=profile_list).order_by('-date_posted')  # Получ нужные posts
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=0)).date()
+        cnt_posts1 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=1)).date()
+        cnt_posts2 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=2)).date()
+        cnt_posts3 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=3)).date()
+        cnt_posts4 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=4)).date()
+        cnt_posts5 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=5)).date()
+        cnt_posts6 = queryset.filter(date_deliver=date).count()
+
+        date = (datetime.datetime.now() + datetime.timedelta(days=6)).date()
+        cnt_posts7 = queryset.filter(date_deliver=date).count()
+
+        context['cnt_posts1'] = cnt_posts1
+        context['cnt_posts2'] = cnt_posts2
+        context['cnt_posts3'] = cnt_posts3
+        context['cnt_posts4'] = cnt_posts4
+        context['cnt_posts5'] = cnt_posts5
+        context['cnt_posts6'] = cnt_posts6
+        context['cnt_posts7'] = cnt_posts7
+
+        return context
+
 
 class UserPostListView(ListView):
     model = Post
@@ -67,6 +106,7 @@ class PostDetailView(DetailView):
 class PostCreateView1(LoginRequiredMixin, CreateView, FormView):
     form_class = PostForm1
     template_name = 'main/post_form1.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -76,6 +116,7 @@ class PostCreateView1(LoginRequiredMixin, CreateView, FormView):
 class PostCreateView2(LoginRequiredMixin, CreateView, FormView):
     form_class = PostForm2
     template_name = 'main/post_form2.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -85,6 +126,7 @@ class PostCreateView2(LoginRequiredMixin, CreateView, FormView):
 class PostCreateView3(LoginRequiredMixin, CreateView, FormView):
     form_class = PostForm3
     template_name = 'main/post_form3.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -95,6 +137,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm1
     template_name = 'main/post_form1.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -111,6 +154,7 @@ class PostUpdateView2(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm2
     template_name = 'main/post_form2.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -127,6 +171,7 @@ class PostUpdateView3(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm3
     template_name = 'main/post_form3.html'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

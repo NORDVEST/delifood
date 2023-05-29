@@ -1,27 +1,50 @@
 {% extends "main/layout.html" %}
 
 {% load crispy_forms_tags %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+    Управление аккаунтом
+{% endblock %}
+
 {% block content %}
 
-    <div class="content-section">
-      <div class="media">
-        <jpg class="ava" width="200" height="200">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        </jpg>
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+    <div class="nav_panel offcanvas-header">
+        <a href="{% url 'home' %}" type=""><img class="mx-3" src="{% static 'main/img/arrow_back.svg' %}" alt=""></a>
+        <p class="m-0" style="font-weight: 600">Управление аккаунтом</p>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center mb-5">
+        <div class="card">
+
+            <div class="user text-center">
+                <div class="profile">
+                    {% thumbnail user.profile.image "80x80" crop="center" upscale=True as im %}
+                        <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+                    {% endthumbnail %}
+                </div>
+            </div>
+
+            <div class="mt-2 text-center">
+                <h4 class="mb-0">{{ user.get_full_name }}</h4>
+                <span class="text-muted d-block mb-2">{{ user.profile.address }}</span>
+                <a href="http://t.me/{{ post.author }}" type="" class="tg_link_profile">@{{ user.username }}</a>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
         </div>
-      </div>
+    </div>
+
 
       <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-          <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Ваш профиль</legend>
+          <fieldset class="form-group px-3">
+              <h5 class="border-bottom mb-4 pb-2">Настройки вашего профиля:</h5>
               {{ u_form|crispy }}
               {{ p_form|crispy }}
           </fieldset>
-          <div class="form-group">
+          <div class="form-group px-3">
               <br>
               <button class="btn btn-outline-info" type="submit">Обновить</button>
           </div>
@@ -33,7 +56,7 @@
     {% if user.is_authenticated %}
         <!-- Кнопка-триггер модального окна -->
         <br>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Выход
         </button>
 

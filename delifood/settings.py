@@ -12,6 +12,23 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import pytz
+from datetime import datetime
+
+# время навигатора
+now = datetime.now()
+# Определить часовой пояс UTC
+utc_timezone = pytz.timezone("UTC")
+# Текущее время конвертируется в часовой пояс UTC
+utc_now = now.astimezone(utc_timezone)
+# navie time не может вызвать метод astimezone, выдается следующее исключение
+# output : ValueError: astimezone() cannot be applied to a naive datetime
+
+# Измените время навигации на время осведомленности, просто используйте replace
+now = now.replace(tzinfo=pytz.timezone('Europe/Moscow'))
+
+utc_now = now.astimezone(utc_timezone)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
