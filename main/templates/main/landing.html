@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load dateshed %} <!--Подгружает все фильтры для работы с датой-->
+{% load thumbnail %}
+
+
+{% block title %}
+    Заказывайте большие порции и делитесь ими, получая оптовую выгоду
+{% endblock %}
+
+
+{% block shedule %}
+    <div style="background: white; height: 2000px">
+
+
+        <div class="container m-0" style="padding-bottom: 150px">
+            <img id="backgro_land" src="{% static 'main/img/backgro_land.svg' %}">
+        </div>
+
+        <div class="zelenoe1">
+            <img id="pereliv" src="{% static 'main/img/pereliv.svg' %}">
+            <div class="tele text-center">
+                <img src="{% static 'main/img/iPhone14_for_land.svg' %}">
+            </div>
+
+            <img id="landing_svgchit" src="{% static 'main/img/landing_svgchit.svg' %}">
+        </div>
+
+        <a class="up" href="{% url 'home' %}"><button type="button" class="land_link btn btn-primary">Глянуть</button></a>
+        <p class="textup mx-2 px-1">Присоединяйся к нам и меняй сферу знакомств и общения вместе с нами!</p>
+
+        <div class="up">
+            <a href="#" class="ssilka text-center" style="font-size: 16px"><img class="me-2" src="{% static 'main/img/logoVK.svg' %}" alt="vk">Community ДелиFood</a>
+            <p class="minitekst mt-3">ДелиFood LLC</p>
+            <p class="minitekst mt-3 px-2" style="font-size: 16px; color: #002033">комьюнити-сервис для поиска идеальной тусовки в общаге, через еду</p>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+

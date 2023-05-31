@@ -1,0 +1,159 @@
+#backgro_land{
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.zelenoe1 {
+    background: #C5EE6D;
+    width: 100%;
+}
+
+.zelenoe2 {
+    background: #C5EE6D;
+    width: 100%;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    height: 30px;
+}
+
+.logo
+{
+    background-color: white;
+}
+
+#pereliv{
+    width: 100%;
+}
+
+#landing_svgchit{
+    width: 100%;
+    position: relative;
+    bottom: 160px;
+
+}
+
+.chem
+{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 125.02%;
+    /* identical to box height, or 28px */
+    color: #002033;
+}
+
+.tele{
+    position: relative;
+    bottom: 190px;
+}
+
+.box1
+{
+    background: #EAEAEA;
+    border-radius: 22px;
+    width: 141px;
+    height: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    color: rgba(0, 32, 51, 0.8);
+}
+.box2
+{
+    width: 126px;
+    height: 24px;
+    background: #C0FFCF;
+    border-radius: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    color: rgba(25, 103, 49, 0.8);
+}
+.box3
+{
+    width: 157px;
+    height: 24px;
+    background: linear-gradient(90deg, #FFE5C6 0%, #DDFFC8 27.92%, #C6FFF8 53.44%, #DAC4FF 77.4%, #FFC6C6 100%);
+    border-radius: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    color: rgba(0, 32, 51, 0.8);
+}
+.tekst
+{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 125.02%;
+    /* or 23px */
+    color: #464646;
+}
+.pereliv1
+{
+    position: absolute;
+    width: 100%;
+    height: 123px;
+    left: 0px;
+    top: 529px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.98) 0%, rgba(217, 217, 217, 0) 100%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+.link-offset-1
+{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 125.02%;
+    /* identical to box height, or 23px */
+    color: #002033;
+}
+
+
+.box4
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 284px;
+    height: 56px;
+    background: #C5EE6D;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 25px;
+    /* identical to box height */
+    text-align: center;
+    color: #002033;
+}
+
+.up {
+    position: relative;
+    bottom: 310px;
+    text-align:center;
+    display:block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 125.02%;
+    color: #464646;
+}
+
+.textup{
+    position: relative;
+    bottom: 410px;
+    text-align:center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 125.02%;
+    color: #464646;
+
+}
