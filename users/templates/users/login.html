@@ -17,13 +17,15 @@
                 <h5 class="border-bottom mb-2 pb-2">Вход</h5>
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-0">
-                        {{ form.username|as_crispy_field }}
+                        <label for="team_name">Ссылка на твой Telegram</label>
+                        <input type="text" name="username" class="form-control">
                     </div>
                     <div class="form-group col-md-6 mb-0">
                         {{ form.password|as_crispy_field }}
                     </div>
                 </div>
             </fieldset>
+            <p>{{ form.errors }}</p>
             <div class="form-group px-3">
                 <button id="button_create_order" class="btn btn-danger dropdown py-2 my-3" type="submit">Войти</button>
             </div>

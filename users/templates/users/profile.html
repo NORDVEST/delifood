@@ -49,17 +49,18 @@
           </fieldset>
           <div class="form-group px-3">
               <br>
-              <button class="btn btn-outline-info" type="submit">Обновить</button>
+              <button id="button_create_order" class="btn btn-danger dropdown py-2 my-1" type="submit">Обновить</button>
           </div>
       </form>
     </div>
+
+    <hr>
 
 
 
     {% if user.is_authenticated %}
         <!-- Кнопка-триггер модального окна -->
-        <br>
-        <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Выход
         </button>
 
@@ -77,7 +78,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
                   <a class="" href="{% url 'logout' %}">
-                      <button type="button" class="btn btn-primary">Выход</button>
+                      <button type="button" class="btn btn-danger">Выход</button>
                   </a>
               </div>
             </div>

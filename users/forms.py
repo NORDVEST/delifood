@@ -22,23 +22,30 @@ ADDRESSES = (
 
 
 class UserRegisterForm(UserCreationForm):
+    username = forms.CharField(
+        help_text='пиши my_tg_link, если https://t.me/my_tg_link, без всяких - @',
+        label='Ссылка на твой Telegram',
+        widget=forms.TextInput(attrs={'placeholder': 'my_tg_link'})
+    )
     email = forms.EmailField()
     first_name = forms.CharField(
-        label="Имя"
+        label="Имя",
     )
     last_name = forms.CharField(
-        label="Фамилия"
+        label="Фамилия",
     )
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'first_name', 'last_name']
-        labels = {
-            'username': _('Ссылка на телеграмм аккаунт (как логин)'),
-        }
 
 
 class UserUpdateForm(forms.ModelForm):
+    username = forms.CharField(
+        help_text='пиши my_tg_link, если https://t.me/my_tg_link, без всяких - @',
+        label='Ссылка на твой Telegram',
+        widget=forms.TextInput(attrs={'placeholder': 'my_tg_link'})
+    )
     email = forms.EmailField()
     first_name = forms.CharField(
         label="Имя",
