@@ -4,6 +4,7 @@ from .views import (
     PostListView,
     UserPostListView,
     PostDetailView,
+    landingDeliFood,
 
     PostCreateView1,
     PostCreateView2,
@@ -20,6 +21,7 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', login_required(login_url='/login/')(PostListView.as_view()), name='home'),
+    path('landing', landingDeliFood, name='landing'),
     path('user/<str:username>', login_required(login_url='/login/')(UserPostListView.as_view()), name='user-posts'),
     path('post/<int:pk>/', login_required(login_url='/login/')(PostDetailView.as_view()), name='post-detail'),
 

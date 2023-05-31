@@ -1,5 +1,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
+{% load thumbnail %}
 
 
 {#<header>#}
@@ -38,9 +39,13 @@
         {% if user.profile.address %}
             <a href="{% url 'profile' %}" class="m-0" style="font-weight: 600">{{ user.profile.address }}</a>
         {% else %}
-            <a href="{% url 'profile' %}" class="m-0" style="font-weight: 600">Выбери свою общагу</a>
+            <a href="{% url 'profile' %}" class="m-0" style="font-weight: 600">Выбери свою общагу <img src="{% static 'main/img/galkaobsh.svg' %}" alt=""></a>
         {% endif %}
-        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2">
+            {% thumbnail user.profile.image "37x37" crop="center" upscale=True as im %}
+                <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        </a>
 
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
@@ -60,7 +65,7 @@
                                 <p class="my_order_title">Мои ордера</p>
                             </div>
                             <div>
-                                <p class="my_order_subtitle">Активных ордеров - 2</p>
+                                <p class="my_order_subtitle">Активных ордеров - {{ active_orders }}</p>
                             </div>
                         </div>
                     </div>
@@ -77,7 +82,7 @@
                                 <p class="my_order_title">Управление аккаунтом</p>
                             </div>
                             <div>
-                                <p class="my_order_subtitle">@you01uoy</p>
+                                <p class="my_order_subtitle">@{{ user.username }}</p>
                             </div>
                         </div>
                     </div>
@@ -110,7 +115,7 @@
                 <p class="mini_landing">Мы – ДелиFood, и мы поможем тебе найти идеальную тусовку, сэкономить на доставке,
                     найдем людей, которым нужна еда оттуда же,
                     откуда и вам – так доставка обойдется вам минимум на 50% <br>дешевле</p>
-                <button type="button" class="land_link btn btn-primary">Узнать подробнее</button>
+                <a href="{% url 'landing' %}"><button type="button" class="land_link btn btn-primary">Узнать подробнее</button></a>
                 <img src="{% static 'main/img/blur_buuble_green.svg' %}" alt="" class="blur_buuble_green">
             </div>
         </div>

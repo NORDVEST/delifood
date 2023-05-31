@@ -39,13 +39,13 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         super(Post, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        if self.image:
+            img = Image.open(self.image.path)
 
-        if img.height > 1280 or img.width > 1280:
-            output_size = (1280, 1280)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
-
+            if img.height > 1280 or img.width > 1280:
+                output_size = (1280, 1280)
+                img.thumbnail(output_size)
+                img.save(self.image.path)
 
 
 # def get_image_filename(instance, filename):

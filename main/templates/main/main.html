@@ -11,7 +11,10 @@
 
 {% block shedule %}
     {% include 'main/header.html' %}
-    <h3 class="ms-3">{{ 0|addDays|date:"F" }}</h3>
+    <div class="nav_panel offcanvas-header">
+        <h3 class="ms-3">{{ 0|addDays|date:"F" }}</h3>
+        <p class="me-3 mb-2" style="font-size: 17px; font-weight: 500; margin-bottom: 0">Выбери дату</p>
+    </div>
     <div class="btn-toolbar" role="toolbar" aria-label="Панель инструментов с группами кнопок">
         <div class="group_shed btn-group" role="group" aria-label="Группа" style="background: #1D94CF;">
             <button type="button" class="shed btn btn-lihgt">
@@ -118,99 +121,87 @@
 
 {% block orders %}
 
-{#    {% for post in posts %}#}
-{#        <article class="media content-section">#}
-{#          <div class="media-body">#}
-{#            <div class="article-metadata">#}
-{#              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>#}
-{#            </div>#}
-{#            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>#}
-{#            <p class="article-content">{{ post.price }}</p>#}
-{#              <p class="article-content">{{ post.price_deliver }}</p>#}
-{#              <p class="article-content">{{ post.cnt_people }}</p>#}
-{#              {% thumbnail post.image "960x339" crop="center" upscale=True as im %}#}
-{#                <img class="card-img my-2" src="{{ im.url }}">#}
-{#              {% endthumbnail %}#}
-{#              <p class="article-content">{{ post.date_deliver }}</p>#}
-{#              <p class="article-content">{{ post.time_deliver }}</p>#}
-{#          </div>#}
-{#        </article>#}
-{#    {% endfor %}#}
-
-
-    {% for post in posts %}
-        <div class = "d-flex container-fluid pe-0 ps-0 mt-2 ms-0 me-0" id="rectwhite">
-            <div class="container ps-0 pe-0 ms-0 me-0">
-                <div class="row ms-0">
-                    <div class="col-10 pb-2">
-                        <div class="d-flex flex-row mt-2">
-                            <div class="image m-1 me-2">
-                                {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
-                                    <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
-                                {% endthumbnail %}
-                            </div>
-
-                            <div class="">
-                                <div class="">
-                                    <p class = "name">{{ post.author.get_full_name }}</p>
+    {% if posts %}
+        {% for post in posts %}
+            <div class = "d-flex container-fluid pe-0 ps-0 mt-2 ms-0 me-0" id="rectwhite">
+                <div class="container ps-0 pe-0 ms-0 me-0">
+                    <div class="row ms-0">
+                        <div class="col-10 pb-2">
+                            <div class="d-flex flex-row mt-2">
+                                <div class="image m-1 me-2">
+                                    {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
+                                        <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+                                    {% endthumbnail %}
                                 </div>
+
                                 <div class="">
-                                    <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
+                                    <div class="">
+                                        <p class = "name">{{ post.author.get_full_name }}</p>
+                                    </div>
+                                    <div class="">
+                                        <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="d-flex flex-row mt-2 pe-3" style="float: right">
-                            <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-0 mx-1">
-                    <div class="col">
-                        <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
-                    </div>
-                </div>
-                <div class="row mt-0 mx-1">
-                    <div class="col">
-                        <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека</p>
-                    </div>
-                </div>
-
-
-                    <div class = "d-flex container-fluid mx-0 px-0">
-                        <div class="row">
-                            <div class="col">
-                                {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
-                                    <img class="card-img " src="{{ im.url }}">
-                                {% endthumbnail %}
+                        <div class="col-2">
+                            <div class="d-flex flex-row mt-2 pe-3" style="float: right">
+                                <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
                             </div>
                         </div>
                     </div>
 
-                <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
+                    <div class="row mt-0 mx-1">
+                        <div class="col">
+                            <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
+                        </div>
+                    </div>
+                    <div class="row mt-0 mx-1">
+                        <div class="col">
+                            <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека</p>
+                        </div>
+                    </div>
 
-                    <div class = "fontzakaz ">в <font color="#59D183">{{ post.time_deliver }}</font> закажу</div>
 
-                    <div> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
-                        {% if post.mod == 'Просто сэкономить' %}
-                            <img class="" src="{% static 'main/img/mod1.svg' %}" width="140">
-                        {% else %}
-                            {% if post.mod == 'Можно посидеть' %}
-                                <img class="" src="{% static 'main/img/mod2.svg' %}" width="140">
+                        <div class = "d-flex container-fluid mx-0 px-0">
+                            <div class="row">
+                                <div class="col">
+                                    {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
+                                        <img class="card-img " src="{{ im.url }}">
+                                    {% endthumbnail %}
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
+
+                        <div class = "fontzakaz ">в <font color="#59D183">{{ post.time_deliver }}</font> закажу</div>
+
+                        <div> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
+                            {% if post.mod == 'Просто сэкономить' %}
+                                <img class="" src="{% static 'main/img/mod1.svg' %}" width="140">
                             {% else %}
-                                <img class="" src="{% static 'main/img/mod3.svg' %}" width="140">
+                                {% if post.mod == 'Можно посидеть' %}
+                                    <img class="" src="{% static 'main/img/mod2.svg' %}" width="140">
+                                {% else %}
+                                    <img class="" src="{% static 'main/img/mod3.svg' %}" width="140">
+                                {% endif %}
+
                             {% endif %}
 
-                        {% endif %}
-
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% elif user.profile.address %}
+        <img class="mt-4" src="{% static 'main/img/plug_main.svg' %}" style="width: 100%">
+    {% else %}
+        <img class="mt-4" src="{% static 'main/img/plug_main_noaddress.svg' %}" style="display:block;
+  margin-left:auto;
+  margin-right:auto;">
+    {% endif %}
 
 {% endblock %}
 

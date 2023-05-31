@@ -11,7 +11,10 @@
     <div class="nav_panel offcanvas-header">
         <a href="{% url 'home' %}" type=""><img class="mx-3" src="{% static 'main/img/arrow_back.svg' %}" alt=""></a>
         <p class="m-0" style="font-weight: 600">Мои ордера</p>
-        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2">
+            {% thumbnail user.profile.image "37x37" crop="center" upscale=True as im %}
+                <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+            {% endthumbnail %}</a>
     </div>
 
     <img src="{% static 'main/img/hint_in_my_order.svg' %}" alt="" width="100%">
@@ -96,99 +99,103 @@
         </div>
     </div>
 
-    {% for post in posts %}
-        <div class="control_panel offcanvas-header px-3">
-            <a class="" href="{% url 'post-delete' post.id %}"><button type="button" id="button_create_order" class="btn btn-danger dropdown py-2">
-                Ордер заполнен
-            </button></a>
-            {% if post.mod == 'Просто сэкономить' %}
-                <a class="edit_order" href="{% url 'post-update' post.id %}">Изменить</a>
-            {% else %}
-                {% if post.mod == 'Можно посидеть' %}
-                    <a class="edit_order" href="{% url 'post-update2' post.id %}">Изменить</a>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="control_panel offcanvas-header px-3">
+                <a class="" href="{% url 'post-delete' post.id %}"><button type="button" id="button_create_order" class="btn btn-danger dropdown py-2">
+                    Ордер заполнен
+                </button></a>
+                {% if post.mod == 'Просто сэкономить' %}
+                    <a class="edit_order" href="{% url 'post-update' post.id %}">Изменить</a>
                 {% else %}
-                    <a class="edit_order" href="{% url 'post-update3' post.id %}">Изменить</a>
+                    {% if post.mod == 'Можно посидеть' %}
+                        <a class="edit_order" href="{% url 'post-update2' post.id %}">Изменить</a>
+                    {% else %}
+                        <a class="edit_order" href="{% url 'post-update3' post.id %}">Изменить</a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-
-        </div>
-
-        <div class = "d-flex container-fluid pe-0 ps-0 mt-0 ms-0 me-0" id="rectwhite_in_user_posts">
-            <div class="container ps-0 pe-0 ms-0 me-0">
-                <div class="row ms-0">
-                    <div class="col-10 pb-2">
-                        <div class="d-flex flex-row mt-2">
-                            <div class="image m-1 me-2">
-                                {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
-                                    <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
-                                {% endthumbnail %}
-                            </div>
-
-                            <div class="">
-                                <div class="">
-                                    <p class = "name">{{ post.author.get_full_name }}</p>
-                                </div>
-                                <div class="">
-                                    <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="d-flex flex-row mt-2 pe-3" style="float: right">
-                            <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-0 mx-1">
-                    <div class="col">
-                        <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
-                    </div>
-                </div>
-                <div class="row mt-0 mx-1">
-                    <div class="col">
-                        <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</p>
-                    </div>
-                </div>
-
-                <div class="row mt-0">
-                    <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
-                        <div class="container blure">
-                            <div class="row">
-                                <div class="col">
-                                    {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
-                                        <img class="card-img " src="{{ im.url }}">
-                                    {% endthumbnail %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
-
-                    <div class = "fontzakaz ">в <font color="#59D183">{{ post.time_deliver }}</font> закажу</div>
-
-                    <div> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
-                        {% if post.mod == 'Просто сэкономить' %}
-                            <img class="" src="{% static 'main/img/mod1.svg' %}" width="140">
-                        {% else %}
-                            {% if post.mod == 'Можно посидеть' %}
-                                <img class="" src="{% static 'main/img/mod2.svg' %}" width="140">
-                            {% else %}
-                                <img class="" src="{% static 'main/img/mod3.svg' %}" width="140">
-                            {% endif %}
-
-                        {% endif %}
-
-                    </div>
-                </div>
 
             </div>
-        </div>
-    {% endfor %}
+
+            <div class = "d-flex container-fluid pe-0 ps-0 mt-0 ms-0 me-0" id="rectwhite_in_user_posts">
+                <div class="container ps-0 pe-0 ms-0 me-0">
+                    <div class="row ms-0">
+                        <div class="col-10 pb-2">
+                            <div class="d-flex flex-row mt-2">
+                                <div class="image m-1 me-2">
+                                    {% thumbnail post.author.profile.image "45x45" crop="center" upscale=True as im %}
+                                        <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+                                    {% endthumbnail %}
+                                </div>
+
+                                <div class="">
+                                    <div class="">
+                                        <p class = "name">{{ post.author.get_full_name }}</p>
+                                    </div>
+                                    <div class="">
+                                        <a href="http://t.me/{{ post.author }}" type="" class="tg_link">@{{ post.author }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="d-flex flex-row mt-2 pe-3" style="float: right">
+                                <img class="mt-1" src="{% static 'main/img/3tochki.svg' %}" alt="3tochki" width="4px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-0 mx-1">
+                        <div class="col">
+                            <p style="margin-bottom: 0.5em" class = "fontKril">{{ post.title }}</p>
+                        </div>
+                    </div>
+                    <div class="row mt-0 mx-1">
+                        <div class="col">
+                            <p style="margin-bottom: 0.5em" class = "fontzakaz"><font color ="#59D183">{{ post.price }} ₽</font> за заказ + <font color ="#59D183">{{ post.price_deliver }} ₽</font> за доставку на <font color ="#59D183">{{ post.cnt_people }}</font> человека = <font color ="#59D183">212,5 ₽</font> с каждого</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-0">
+                        <div class = "d-flex container-fluid ms-0 me-0 pe-0 ps-0" id = "rectscreen">
+                            <div class="container blure">
+                                <div class="row">
+                                    <div class="col">
+                                        {% thumbnail post.image "x1280" crop="top" upscale=True as im %}
+                                            <img class="card-img " src="{{ im.url }}">
+                                        {% endthumbnail %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center justify-content-between my-2 px-3">
+
+                        <div class = "fontzakaz ">в <font color="#59D183">{{ post.time_deliver }}</font> закажу</div>
+
+                        <div> <!--Списать стиль для тега у Танинового Лендинга, лтюо добавить как svg-->
+                            {% if post.mod == 'Просто сэкономить' %}
+                                <img class="" src="{% static 'main/img/mod1.svg' %}" width="140">
+                            {% else %}
+                                {% if post.mod == 'Можно посидеть' %}
+                                    <img class="" src="{% static 'main/img/mod2.svg' %}" width="140">
+                                {% else %}
+                                    <img class="" src="{% static 'main/img/mod3.svg' %}" width="140">
+                                {% endif %}
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <img class="mt-4" src="{% static 'main/img/plug_user_profile.svg' %}" style="width: 100%">
+    {% endif %}
 
     <div class="pagination justify-content-center">
     {% if is_paginated %}

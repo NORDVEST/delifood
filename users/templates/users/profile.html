@@ -13,7 +13,10 @@
     <div class="nav_panel offcanvas-header">
         <a href="{% url 'home' %}" type=""><img class="mx-3" src="{% static 'main/img/arrow_back.svg' %}" alt=""></a>
         <p class="m-0" style="font-weight: 600">Управление аккаунтом</p>
-        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="avanav" width="37px" height="37px"></a>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2">
+            {% thumbnail user.profile.image "37x37" crop="center" upscale=True as im %}
+                <img class="rounded-circle article-img" src="{{ im.url }}" alt="">
+            {% endthumbnail %}</a>
     </div>
 
     <div class="container d-flex justify-content-center align-items-center mb-5">

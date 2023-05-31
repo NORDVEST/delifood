@@ -28,6 +28,12 @@ from .models import *
 from users.models import Profile
 
 
+def landingDeliFood(request):
+
+    return render(request, 'main/landing.html')
+
+
+
 class PostListView(ListView, LoginRequiredMixin):
     model = Post
     template_name = 'main/main.html'
@@ -50,6 +56,12 @@ class PostListView(ListView, LoginRequiredMixin):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        user = User.objects.get(username=self.request.user.username)
+
+
+        my_queryset = Post.objects.filter(author=user).count()
+
+        context['active_orders'] = my_queryset
 
         profile_list = Profile.objects.filter(address=self.request.user.profile.address)  # Получили список нужных нам
         # профилей
@@ -84,6 +96,7 @@ class PostListView(ListView, LoginRequiredMixin):
         context['cnt_posts5'] = cnt_posts5
         context['cnt_posts6'] = cnt_posts6
         context['cnt_posts7'] = cnt_posts7
+
 
         return context
 

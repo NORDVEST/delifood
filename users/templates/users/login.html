@@ -1,14 +1,20 @@
 {% extends "main/layout.html" %}
 
 {% load crispy_forms_tags %}
-
+{% load static %}
 
 {% block content %}
+
+    <div class="nav_panel offcanvas-header mb-3" style="background: #002033;">
+        <a href="" type=""><img class="mx-3 pb-1" src="{% static 'main/img/brand_and_logo.svg' %}" alt="" width="150"></a>
+        <a href="{% url 'profile' %}" type="" class="me-3 my-2"><img class="rounded-circle account-img" src="{% static 'main/img/profile.svg' %}" alt="avanav" width="37px" height="37px"></a>
+    </div>
+
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Вход</legend>
+            <fieldset class="form-group px-3">
+                <h5 class="border-bottom mb-2 pb-2">Вход</h5>
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-0">
                         {{ form.username|as_crispy_field }}
@@ -18,8 +24,8 @@
                     </div>
                 </div>
             </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Войти</button>
+            <div class="form-group px-3">
+                <button id="button_create_order" class="btn btn-danger dropdown py-2 my-3" type="submit">Войти</button>
             </div>
         </form>
         <div class="border-top pt-3">
