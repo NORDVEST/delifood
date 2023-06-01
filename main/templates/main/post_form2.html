@@ -12,8 +12,45 @@
                 <button type="submit" style="border: 0;"><img class="mx-3 my-2" src="{% static 'main/img/done_form.svg' %}"></button>
             </div>
             <fieldset class="form-group px-3">
-                <legend class="border-bottom mb-4">Новая запись</legend>
-                {{ form|crispy }}
+                <textarea name="title" id="text2"
+                placeholder="Что и откуда вы хотите заказать? Например: хочу заказать большой баскет или давайте скинемся, немного не хватает на бесплатную доставку"></textarea>
+                <hr class="line1">
+
+                <p id="p1">Выберите дату и время, когда именно вы закажете и соберётесь:</p>
+
+                {{ form.date_deliver|as_crispy_field }}
+
+                {{ form.time_deliver|as_crispy_field }}
+
+                <div class="textlines">
+
+                    <label for="formGroupExampleInput" class="">Стоимость всего товара</label>
+                    <div class="input-group">
+                      <span class="input-group-text">₽</span>
+                      <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+
+                    <label for="formGroupExampleInput" class="">Стоимость доставки</label>
+                    <div class="input-group">
+                      <span class="input-group-text">₽</span>
+                      <input type="text" name="price_deliver" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <span class="input-group-text">.00</span>
+                    </div>
+
+                    <div class="">
+                        Количество людей
+                        <label for="formGroupExampleInput" class="form-label"></label>
+                        <input type="text" name="cnt_people" class="form-control" id="formGroupExampleInput1">
+                    </div>
+                </div>
+
+                <div class="mb-1">
+                    <label for="formFile" class="form-label">Добавить фотографию</label>
+                    <input class="form-control" name="image" type="file" id="formFile">
+                </div>
+
+                <input class="form-control" name="mod" type="hidden">
             </fieldset>
         </form>
     </div>

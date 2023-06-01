@@ -17,8 +17,11 @@
                 <h5 class="border-bottom mb-2 pb-2">Вход</h5>
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-0">
-                        <label for="team_name">Ссылка на твой Telegram</label>
-                        <input type="text" name="username" class="form-control">
+                        <label for="basic-url" class="form-label">Ваша Telegram ссылка</label>
+                          <div class="input-group">
+                            <span class="input-group-text" id="basic-addon3">https://t.me/</span>
+                            <input type="text" name="username" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                          </div>
                     </div>
                     <div class="form-group col-md-6 mb-0">
                         {{ form.password|as_crispy_field }}
