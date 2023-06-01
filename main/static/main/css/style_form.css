@@ -1,0 +1,114 @@
+
+
+#text2 {
+    margin-top: 10px;
+    width: 100%;
+    height: 120px;
+    border-style: none;
+    font-size: 17px;
+    padding-left: 5px;
+    resize: none;
+    line-height: 22px;
+}
+
+#text2, input[type="submit"], input[type="reset"] {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0px;
+}
+
+.line1 {
+    margin-top: 0;
+    margin-bottom: 9px;
+}
+
+#p1 {
+    /*margin-left: 5px;*/
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.btn btn-secondary dropdown-toggle {
+    background: white;
+    color: #ffffff;
+}
+
+
+
+
+
+
+#formGroupExampleInput {
+    border-color: black;
+}
+
+#formGroupExampleInput1 {
+    border-color: black;
+
+}
+
+#dropdown1 {
+    color: #ffffff;
+    width: 200px;
+    /* margin-bottom: 15px; */
+    margin-left: 8px;
+    /* padding-top: 0px; */
+
+}
+
+#btn1 {
+    border-style: none;
+}
+
+#btn2 {
+    border-style: none;
+}
+
+#dropdown2 {
+    margin-left: 8px;
+    width: 200px;
+}
+
+#uploud-btn {
+    margin-top: 13px;
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-radius: 10px;
+    width: 260px;
+    margin-bottom: 50px;
+
+}
+
+.submitbtn {
+    padding-left: 150px;
+    margin-top: 21px;
+    padding-right: 15px;
+    position: absolute;
+    right: 0;
+}
+
+.img_camera {
+    position: relative;
+    right: 13px;
+    bottom: 1px;
+
+}
+
+#submitbtn {
+    background-color: rgb(213, 252, 215);
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #59D183;
+    border-radius: 10px;
+    width: 160px;
+    height: 37px;
+
+}
