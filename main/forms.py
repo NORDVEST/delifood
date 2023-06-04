@@ -49,6 +49,7 @@ class PostForm1(forms.ModelForm):
     )
     date_deliver = forms.ChoiceField(
         label="Дата ордера",
+        initial=(datetime.datetime.now() + datetime.timedelta(days=0)).date(),
         choices=DATET
     )
     time_deliver = forms.TimeField(
@@ -74,6 +75,7 @@ class PostForm2(forms.ModelForm):
     )
     date_deliver = forms.ChoiceField(
         label="Дата ордера",
+        initial=(datetime.datetime.now() + datetime.timedelta(days=0)).date(),
         choices=DATET
     )
     time_deliver = forms.TimeField(
@@ -99,6 +101,7 @@ class PostForm3(forms.ModelForm):
     )
     date_deliver = forms.ChoiceField(
         label="Дата ордера",
+        initial=(datetime.datetime.now() + datetime.timedelta(days=0)).date(),
         choices=DATET
     )
     time_deliver = forms.TimeField(

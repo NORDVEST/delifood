@@ -33,7 +33,6 @@ def landingDeliFood(request):
     return render(request, 'main/landing.html')
 
 
-
 class PostListView(ListView, LoginRequiredMixin):
     model = Post
     template_name = 'main/main.html'
@@ -97,7 +96,6 @@ class PostListView(ListView, LoginRequiredMixin):
         context['cnt_posts6'] = cnt_posts6
         context['cnt_posts7'] = cnt_posts7
 
-
         return context
 
 
@@ -149,7 +147,7 @@ class PostCreateView3(LoginRequiredMixin, CreateView, FormView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm1
-    template_name = 'main/post_form1.html'
+    template_name = 'main/update_post_form.html'
     success_url = '/'
 
     def form_valid(self, form):
@@ -166,7 +164,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostUpdateView2(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm2
-    template_name = 'main/post_form2.html'
+    template_name = 'main/update_post_form.html'
     success_url = '/'
 
     def form_valid(self, form):
@@ -183,7 +181,7 @@ class PostUpdateView2(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostUpdateView3(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm3
-    template_name = 'main/post_form3.html'
+    template_name = 'main/update_post_form.html'
     success_url = '/'
 
     def form_valid(self, form):

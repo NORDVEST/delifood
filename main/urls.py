@@ -29,9 +29,9 @@ urlpatterns = [
     path('post/new/2', PostCreateView2.as_view(), name='post-create2'),
     path('post/new/3', PostCreateView3.as_view(), name='post-create3'),
 
-    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
-    path('post/<int:pk>/update/', PostUpdateView2.as_view(), name='post-update2'),
-    path('post/<int:pk>/update/', PostUpdateView3.as_view(), name='post-update3'),
+    path('post/<int:pk>/update/1', PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/update/2', PostUpdateView2.as_view(), name='post-update2'),
+    path('post/<int:pk>/update/3', PostUpdateView3.as_view(), name='post-update3'),
 
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     # path('upload/', views.image_upload_view)

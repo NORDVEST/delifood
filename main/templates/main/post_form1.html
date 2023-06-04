@@ -14,7 +14,7 @@
             </div>
             <fieldset class="form-group px-3">
                 <textarea name="title" id="text2"
-                placeholder="Что и откуда вы хотите заказать? Например: хочу заказать большой баскет или давайте скинемся, немного не хватает на бесплатную доставку"></textarea>
+                placeholder="Что и откуда вы хотите заказать? Например: хочу заказать большой баскет или давайте скинемся, немного не хватает на бесплатную доставку">{{ object.title }}</textarea>
                 <hr class="line1">
 
                 <p id="p1">Выберите дату и время, когда именно вы закажете и соберётесь:</p>
@@ -28,30 +28,31 @@
                     <label for="formGroupExampleInput" class="">Стоимость всего товара</label>
                     <div class="input-group">
                       <span class="input-group-text">₽</span>
-                      <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <input type="text" name="price" value="{{ object.price }}" class="form-control" aria-label="Amount (to the nearest dollar)">
                       <span class="input-group-text">.00</span>
                     </div>
 
                     <label for="formGroupExampleInput" class="">Стоимость доставки</label>
                     <div class="input-group">
                       <span class="input-group-text">₽</span>
-                      <input type="text" name="price_deliver" class="form-control" aria-label="Amount (to the nearest dollar)">
+                      <input type="text" name="price_deliver" value="{{ object.price_deliver }}" class="form-control" aria-label="Amount (to the nearest dollar)">
                       <span class="input-group-text">.00</span>
                     </div>
 
                     <div class="">
                         Количество людей
                         <label for="formGroupExampleInput" class="form-label"></label>
-                        <input type="text" name="cnt_people" class="form-control" id="formGroupExampleInput1">
+                        <input type="text" name="cnt_people" value="{{ object.cnt_people }}" class="form-control" id="formGroupExampleInput1">
                     </div>
                 </div>
 
                 <div class="mb-1">
                     <label for="formFile" class="form-label">Добавить фотографию</label>
-                    <input class="form-control" name="image" type="file" id="formFile">
+                    <input class="form-control" name="image" value="{{ object.image }}" type="file" id="formFile">
                 </div>
 
                 <input class="form-control" name="mod" type="hidden">
+
             </fieldset>
         </form>
     </div>
