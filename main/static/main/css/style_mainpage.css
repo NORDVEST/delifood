@@ -3,6 +3,31 @@ body {
 	background-color: #ECEDF1;
 }
 
+#onlyPhone{
+	width: 100%;
+	z-index: 10;
+}
+
+#onlyPhonediv{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 3000px;
+	width: 100%;
+	background: #ECEDF1;
+	z-index: 10;
+}
+
+@media (max-width: 430px) {
+	#onlyPhone{
+		display: none;
+	}
+
+	#onlyPhonediv{
+		display: none;
+	}
+}
+
 table{
 	background-color: #FDFAF5;
 	border-radius: 6px;
