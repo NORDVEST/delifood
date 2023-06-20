@@ -11,105 +11,111 @@
 
 {% block shedule %}
     {% include 'main/header.html' %}
-    <div class="nav_panel offcanvas-header">
-        <h3 class="ms-3">{{ 0|addDays|date:"F" }}</h3>
-        <p class="me-3 mb-2" style="font-size: 17px; font-weight: 500; margin-bottom: 0">Выбери дату</p>
-    </div>
-    <div class="btn-toolbar" role="toolbar" aria-label="Панель инструментов с группами кнопок">
-        <div class="group_shed btn-group" role="group" aria-label="Группа" style="background: #1D94CF;">
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="{% url 'home' %}">
-                    <p class="date_orders">{{ 0|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 0|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts1 }} <br>
-                        {% if cnt_posts1 == 2  or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 1|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 1|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 1|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts2 }} <br>
-                        {% if cnt_posts2 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 2|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 2|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 2|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts3 }} <br>
-                        {% if cnt_posts3 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 3|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 3|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 3|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts4 }} <br>
-                        {% if cnt_posts4 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 4|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 4|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 4|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts5 }} <br>
-                        {% if cnt_posts5 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 5|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 5|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 5|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts6 }} <br>
-                        {% if cnt_posts6 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
-            <button type="button" class="shed btn btn-lihgt">
-                <a href="?date={{ 6|addDays|date:"Y-m-d" }}">
-                    <p class="date_orders">{{ 6|addDays|date:"D" }}</p>
-                    <p class="date_number">{{ 6|addDays|date:"j" }}</p>
-                    <p class="cnt_orders">{{ cnt_posts7 }} <br>
-                        {% if cnt_posts7 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
-                            ордера
-                            {% else %}
-                            ордеров
-                        {% endif %}
-                    </p>
-                </a>
-            </button>
+    {% if user.profile.address %}
+        <div class="nav_panel offcanvas-header">
+            <h3 class="ms-3">{{ 0|addDays|date:"F" }}</h3>
+            <p class="me-3 mb-2" style="font-size: 17px; font-weight: 500; margin-bottom: 0">Выбери дату</p>
         </div>
-    </div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Панель инструментов с группами кнопок">
+            <div class="group_shed btn-group" role="group" aria-label="Группа" style="background: #1D94CF;">
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="{% url 'home' %}">
+                        <p class="date_orders">{{ 0|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 0|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts1 }} <br>
+                            {% if cnt_posts1 == 2  or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 1|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 1|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 1|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts2 }} <br>
+                            {% if cnt_posts2 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 2|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 2|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 2|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts3 }} <br>
+                            {% if cnt_posts3 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 3|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 3|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 3|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts4 }} <br>
+                            {% if cnt_posts4 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 4|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 4|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 4|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts5 }} <br>
+                            {% if cnt_posts5 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 5|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 5|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 5|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts6 }} <br>
+                            {% if cnt_posts6 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+                <button type="button" class="shed btn btn-lihgt">
+                    <a href="?date={{ 6|addDays|date:"Y-m-d" }}">
+                        <p class="date_orders">{{ 6|addDays|date:"D" }}</p>
+                        <p class="date_number">{{ 6|addDays|date:"j" }}</p>
+                        <p class="cnt_orders">{{ cnt_posts7 }} <br>
+                            {% if cnt_posts7 == 2 or cnt_posts2 == 3 or cnt_posts2 == 4 %}
+                                ордера
+                                {% else %}
+                                ордеров
+                            {% endif %}
+                        </p>
+                    </a>
+                </button>
+            </div>
+        </div>
+    {% else %}
+
+
+
+    {% endif %}
 
 {% endblock %}
 

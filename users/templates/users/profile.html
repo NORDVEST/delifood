@@ -32,7 +32,11 @@
 
             <div class="mt-2 text-center">
                 <h4 class="mb-0">{{ user.get_full_name }}</h4>
-                <span class="text-muted d-block mb-2">{{ user.profile.address }}</span>
+                {% if user.profile.address %}
+                    <span class="text-muted d-block mb-2">{{ user.profile.address }}</span>
+                {% else %}
+                    <span class="text-muted d-block mb-2">Общежитие не выбрано</span>
+                {% endif %}
                 <a href="http://t.me/{{ post.author }}" type="" class="tg_link_profile">@{{ user.username }}</a>
                 <p class="text-secondary">{{ user.email }}</p>
             </div>
@@ -49,7 +53,7 @@
           </fieldset>
           <div class="form-group px-3">
               <br>
-              <button id="button_create_order" class="btn btn-danger dropdown py-2 my-1" type="submit">Обновить</button>
+              <button id="button_create_order" class="btn btn-danger dropdown py-2 my-1" type="submit">Сохранить и обновить</button>
           </div>
       </form>
     </div>
