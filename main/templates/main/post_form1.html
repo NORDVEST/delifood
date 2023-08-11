@@ -15,6 +15,16 @@
             <fieldset class="form-group px-3">
                 <textarea name="title" id="text2"
                 placeholder="Что и откуда вы хотите заказать? Например: хочу заказать большой баскет или давайте скинемся, немного не хватает на бесплатную доставку">{{ object.title }}</textarea>
+
+                <script>
+                    const textarea = document.querySelector("textarea");
+                    textarea.addEventListener("keyup", e => {
+                        textarea.style.height = "auto";
+                        let scHeight = e.target.scrollHeight;
+                        textarea.style.height = `${scHeight}px`;
+                    });
+                </script>
+
                 <hr class="line1">
 
                 <p id="p1">Выберите дату и время, когда именно вы закажете и соберётесь:</p>

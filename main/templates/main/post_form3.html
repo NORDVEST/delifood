@@ -13,7 +13,7 @@
             </div>
             <fieldset class="form-group px-3">
                 <textarea name="title" id="text2"
-                placeholder="Что и откуда вы хотите заказать? Чем вы предлагаете заняться? Например: посмотреть кино или сыграть в мафию, под квас и суши">{{ object.title }}</textarea>
+                placeholder="Что и откуда вы хотите заказать? Чем вы предлагаете заняться? Например: посмотреть кино, создать клуб английского или сыграть в мафию, под квас и пиццу">{{ object.title }}</textarea>
                 <hr class="line1">
 
                 <p id="p1">Выберите дату и время, когда именно вы закажете и соберётесь:</p>
@@ -23,14 +23,6 @@
                 {{ form.time_deliver|as_crispy_field }}
 
                 <div class="textlines">
-
-                    <label for="formGroupExampleInput" class="">Стоимость всего товара</label>
-                    <div class="input-group">
-                      <span class="input-group-text">₽</span>
-                      <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)">
-                      <span class="input-group-text">.00</span>
-                    </div>
-<div class="textlines">
 
                     <label for="formGroupExampleInput" class="">Стоимость всего товара</label>
                     <div class="input-group">
