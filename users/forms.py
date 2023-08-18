@@ -22,7 +22,7 @@ ADDRESSES = (
 
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
-        help_text='пиши my_tg_link, если https://t.me/my_tg_link, без всяких - @',
+        help_text='Ссылка на профиль, которой можно поделиться, должна иметь вид https://t.me/username, где «username» – это ваше имя пользователя без знака @',
         label='Ссылка на твой Telegram',
         widget=forms.TextInput(attrs={'placeholder': 'my_tg_link'})
     )

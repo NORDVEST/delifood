@@ -1,42 +1,190 @@
-{% extends 'main/layout.html' %}
+
 {% load static %}
 {% load dateshed %} <!--Подгружает все фильтры для работы с датой-->
 {% load thumbnail %}
 
 
-{% block title %}
-    Заказывайте большие порции и делитесь ими, получая оптовую выгоду
-{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Заказывайте большие порции и делитесь ими, получая оптовую выгоду</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "{% static 'main/css/style_mainpage.css' %}">
 
+    <style>
+        body {
+            margin: 0;
+        }
+        #landing{
+            width: 100%;
+            position: absolute;
+        }
 
-{% block shedule %}
-    <div style="background: white; height: 2000px">
+        .fixed{
+            position: fixed;
+            top: 20%;
+            left: 68%;
+        }
 
+        #qr {
+            width: 70%;
+        }
 
-        <div class="container m-0" style="padding-bottom: 150px">
-            <img id="backgro_land" src="{% static 'main/img/backgro_land.svg' %}">
-        </div>
+        #p_land {
+            color: #002033;
+            font-family: Inter;
+            font-size: 160%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 125.023%; /* 45.008px */
+            width: 400px;
+        }
 
-        <div class="zelenoe1">
-            <img id="pereliv" src="{% static 'main/img/pereliv.svg' %}">
-            <div class="tele text-center">
-                <img src="{% static 'main/img/iPhone14_for_land.svg' %}">
-            </div>
+        #rect {
+            position: absolute;
+            left: 45%;
+            top: 35%;
+        }
 
-            <img id="landing_svgchit" src="{% static 'main/img/landing_svgchit.svg' %}">
-        </div>
+        #landing_logo {
+            position: absolute;
+            left: 45.5%;
+            top: 36%;
+            width: 3%;
+        }
 
-        <a class="up" href="{% url 'home' %}"><button type="button" class="land_link btn btn-primary">Глянуть</button></a>
-        <p class="textup mx-2 px-1">Присоединяйся к нам и меняй сферу знакомств и общения вместе с нами!</p>
+        .phone {
+            position: absolute;
+            left: 16%;
+            top: 78%;
+        }
 
-        <div class="up">
-            <a href="#" class="ssilka text-center" style="font-size: 16px"><img class="me-2" src="{% static 'main/img/logoVK.svg' %}" alt="vk">Community ДелиFood</a>
-            <p class="minitekst mt-3">ДелиFood LLC</p>
-            <p class="minitekst mt-3 px-2" style="font-size: 16px; color: #002033">комьюнити-сервис для поиска идеальной тусовки в общаге, через еду</p>
-        </div>
+        #rect3 {
+            margin: 300px 700px;
+        }
 
+        #landing_button_id {
+            position: absolute;
+            top: 365%;
+            left: 21.5%;
+        }
 
+        #landing_button {
+            color: #002033;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            width: 120%;
+        }
+
+        @media (min-width: 431px) {
+            #landing_for_phone{
+                display: none;
+            }
+        }
+
+        @media (max-width: 430px) {
+            #landing{
+                display: none;
+            }
+
+            #qr{
+                display: none;
+            }
+            #p_land {
+                display: none;
+            }
+            #landing_for_phone{
+                width: 100%;
+            }
+
+            #landing_button_id{
+                position: absolute;
+                top: 270%;
+                left: 0%;
+
+            }
+
+            #landing_button{
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                width: 120%;
+                padding: 13px 29px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="landing" src="{% static 'main/img/Landing_page_desktop.svg' %}">
+    <img id="landing_for_phone" src="{% static 'main/img/landing_for_phone.svg' %}">
+    <div class="fixed">
+        <img id="qr" src="{% static 'main/img/qr_delifood.svg' %}">
+        <p id="p_land">Веб-платформа пока адаптирована только под смартфоны📱</p>
+    </div>
+        <div id="rect"></div>
+    <img id="landing_logo" src="{% static 'main/img/logo.svg' %}">
+
+    <div class="phone">
+        <div id="rect2"></div>
+        <div id="rect3"></div>
     </div>
 
-{% endblock %}
+    <a id="landing_button_id" href="{% url 'home' %}"><button type="button" id="landing_button" class="land_link btn btn-primary">Глянуть</button></a>
+
+    <script type="text/javascript">
+        var e = document.getElementById("rect");
+
+        e.style.width = "70px";
+        e.style.height = "70px";
+        e.style.filter = 'blur(50px)';
+        e.style.borderRadius = '100px';
+
+        var color = 0;
+
+        setInterval(function () {
+            color = color + 1 % 360;
+            e.style.backgroundColor = "hsl(" + color + ", 100%, 50%)"; // hsl(0, 100%, 50%)
+        }, 50);
+
+        var r = document.getElementById("rect2");
+
+        r.style.width = "25px";
+        r.style.height = "90px";
+        r.style.filter = 'blur(50px)';
+        r.style.borderRadius = '100px';
+
+        var color2 = 0;
+
+        setInterval(function () {
+            color2 = color2 + 1 % 360;
+            r.style.backgroundColor = "hsl(" + color2 + ", 100%, 50%)"; // hsl(0, 100%, 50%)
+        }, 50);
+
+        var r3 = document.getElementById("rect3");
+
+        r3.style.width = "40px";
+        r3.style.height = "130px";
+        r3.style.filter = 'blur(70px)';
+        r3.style.borderRadius = '100px';
+
+        var color3 = 0;
+
+        setInterval(function () {
+            color3 = color3 + 1 % 360;
+            r3.style.backgroundColor = "hsl(" + color3 + ", 100%, 50%)"; // hsl(0, 100%, 50%)
+        }, 50);
+
+    </script>
+</body>
+</html>
+
+
+
 
