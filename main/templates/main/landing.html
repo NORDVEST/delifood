@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#111111">
-    <title>платформа для создания тусовок в общаге</title>
+    <title>Платформа для создания тусовок в общаге</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel = "stylesheet" href = "{% static 'main/css/style_landing.css' %}">
@@ -51,7 +51,8 @@
                             <picture>
                                 <img loading="lazy" src="{% static 'main/img/iPhone.png' %}" class="phone__image" alt="iPhone">
                             </picture>
-                        </div><button class="btn-reset phone__btn">Глянуть</button>
+                        </div>
+                        <a href="{% url 'home' %}"><button class="btn-reset phone__btn">Глянуть</button></a>
                     </div>
                     <img src="{% static 'main/img/vector_reverse.svg' %}" alt="" class="phone__border-bottom">
                 </div>
@@ -88,7 +89,8 @@
                     <div class="delifood__wrap">
                         <div class="delifood__logo">
                             <div class="delifood__rect"></div><img src="{% static 'main/img/logo-1.svg' %}" alt="logo">
-                            <div class="delifood__title">ДелиFood</div><button class="delifood__btn btn-reset">Глянуть</button>
+                            <div class="delifood__title">ДелиFood</div>
+                            <a href="{% url 'home' %}"><button class="delifood__btn btn-reset">Глянуть</button></a>
                         </div>
                         <p class="delifood__text">Сделай свою студенческую жизнь!</p>
                         <p class="delifood__ps">P.S: это, обычно, даёт большой опыт, который может тебя сильно забустить по жизни или даёт людей на всю жизнь</p>
