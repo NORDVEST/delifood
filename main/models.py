@@ -44,8 +44,11 @@ class Post(models.Model):
 
             if img.height > 1280 or img.width > 1280:
                 output_size = (1280, 1280)
-                img.thumbnail(output_size)
-                img.save(self.image.path)
+                if img.height >= img.width:
+                    img = img.rotate(360)
+                    img.thumbnail(output_size)
+                    img.save(self.image.path)
+
 
 
 # def get_image_filename(instance, filename):
