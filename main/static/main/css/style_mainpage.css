@@ -212,6 +212,11 @@ a:hover {text-decoration: none; color: #002033;}
 	padding: 0;
 }
 
+#hint_create{
+	margin-left: 50px;
+	margin-bottom: 12px;
+}
+
 .my_order_title{
 	font-style: normal;
 	font-weight: 400;
